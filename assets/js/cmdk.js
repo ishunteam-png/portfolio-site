@@ -1,6 +1,8 @@
-/* cmdk.js - Cmd/Ctrl-K command palette for the home page.
- * Jump to project stripes, sections, PDFs, and external links. */
-
+/* cmdk.js - Cmd/Ctrl-K command palette.
+ *
+ * Everything on the portfolio is on one page now, so the palette
+ * jumps to in-page anchors. No more stale entries to sub-pages.
+ */
 (function () {
   "use strict";
 
@@ -16,7 +18,7 @@
       type: "anchor", target: "#top" },
 
     { code: "01",   label: "Haimcore",
-      desc: "Next.js AI workspace + Amirani",
+      desc: "Next.js AI workspace with Amirani",
       type: "anchor", target: "#proj-01" },
     { code: "02",   label: "Relief Guru",
       desc: "Telegram-driven n8n video pipeline",
@@ -25,37 +27,28 @@
       desc: "Live AI hospital management system",
       type: "anchor", target: "#proj-03" },
     { code: "04",   label: "SATALITE Delhi",
-      desc: "Strict EGMS-L3 InSAR pilot",
+      desc: "Strict EGMS-L3 InSAR pilot + map",
       type: "anchor", target: "#proj-04" },
     { code: "05",   label: "SATALITE Kite Beach",
       desc: "L2-equivalent Sentinel-1 pilot",
       type: "anchor", target: "#proj-05" },
 
+    { code: "MAP",  label: "Interactive PS map",
+      desc: "2,656 Persistent Scatterers, Delhi",
+      type: "anchor", target: "#ps-map-inline" },
+    { code: "ARCH", label: "Relief Guru architecture",
+      desc: "7-workflow n8n diagram",
+      type: "anchor", target: "#arch" },
+
     { code: "HOW",  label: "How I work",
       desc: "Five principles",
       type: "anchor", target: "#how" },
-    { code: "MAIL", label: "Send an email",
-      desc: "singhishu2060@gmail.com",
-      type: "url",    target: "mailto:singhishu2060@gmail.com" },
     { code: "FORM", label: "Open contact form",
       desc: "Send a quick note",
       type: "anchor", target: "#contact" },
-
-    { code: "01+",  label: "Haimcore - full case study",
-      desc: "Deep dive page",
-      type: "url",    target: "projects/haimcore.html" },
-    { code: "02+",  label: "Relief Guru - full case study",
-      desc: "Architecture + 7 workflows",
-      type: "url",    target: "projects/relief-guru.html" },
-    { code: "03+",  label: "Jalaram - full case study",
-      desc: "Schema, Copilot, deploy",
-      type: "url",    target: "projects/jalaram.html" },
-    { code: "04+",  label: "SATALITE Delhi - full case study",
-      desc: "Interactive PS map + methodology",
-      type: "url",    target: "projects/delhi.html" },
-    { code: "05+",  label: "SATALITE Kite Beach - full case study",
-      desc: "Pipeline detail",
-      type: "url",    target: "projects/kite-beach.html" },
+    { code: "MAIL", label: "Send an email",
+      desc: "singhishu2060@gmail.com",
+      type: "url",    target: "mailto:singhishu2060@gmail.com" },
 
     { code: "CV",   label: "Download CV (PDF)",
       desc: "Ishu_Singh_CV.pdf",
@@ -112,7 +105,12 @@
     render();
   }
 
-  function open()  { overlay.hidden = false; input.value = ""; filter(""); setTimeout(() => input.focus(), 30); }
+  function open()  {
+    overlay.hidden = false;
+    input.value = "";
+    filter("");
+    setTimeout(() => input.focus(), 30);
+  }
   function close() { overlay.hidden = true; }
 
   function act(a) {
@@ -132,10 +130,20 @@
   overlay.addEventListener("click", (e) => { if (e.target === overlay) close(); });
   input.addEventListener("input", (e) => filter(e.target.value));
   input.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowDown") { e.preventDefault(); cursor = Math.min(cursor + 1, filtered.length - 1); render(); }
-    else if (e.key === "ArrowUp") { e.preventDefault(); cursor = Math.max(cursor - 1, 0); render(); }
-    else if (e.key === "Enter") { e.preventDefault(); if (filtered[cursor]) act(filtered[cursor]); }
-    else if (e.key === "Escape") { close(); }
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      cursor = Math.min(cursor + 1, filtered.length - 1);
+      render();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      cursor = Math.max(cursor - 1, 0);
+      render();
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (filtered[cursor]) act(filtered[cursor]);
+    } else if (e.key === "Escape") {
+      close();
+    }
   });
   window.addEventListener("keydown", (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {

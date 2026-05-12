@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ishu-portfolio.vercel.app/</loc><priority>1.0</priority></url>
-  <url><loc>https://ishu-portfolio.vercel.app/projects/haimcore.html</loc><priority>0.8</priority></url>
-  <url><loc>https://ishu-portfolio.vercel.app/projects/relief-guru.html</loc><priority>0.8</priority></url>
-  <url><loc>https://ishu-portfolio.vercel.app/projects/jalaram.html</loc><priority>0.8</priority></url>
-  <url><loc>https://ishu-portfolio.vercel.app/projects/delhi.html</loc><priority>0.8</priority></url>
-  <url><loc>https://ishu-portfolio.vercel.app/projects/kite-beach.html</loc><priority>0.8</priority></url>
+  <url><loc>https://portfolio-site-rosy-nu-61.vercel.app/</loc><priority>1.0</priority></url>
+  <url><loc>https://portfolio-site-rosy-nu-61.vercel.app/assets/pdf/Ishu_Singh_CV.pdf</loc><priority>0.6</priority></url>
+  <url><loc>https://portfolio-site-rosy-nu-61.vercel.app/assets/pdf/Ishu_Singh_Portfolio.pdf</loc><priority>0.6</priority></url>
 </urlset>

@@ -1,10 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true,
+  "cleanUrls": false,
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/assets/(.*)",
+      "source": "/assets/img/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -13,11 +13,47 @@
       ]
     },
     {
-      "source": "/(.*).html",
+      "source": "/assets/pdf/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/data/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/js/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=300, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/css/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=60, must-revalidate"
         },
         {
           "key": "X-Content-Type-Options",
@@ -28,12 +64,26 @@
           "value": "strict-origin-when-cross-origin"
         }
       ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=60, must-revalidate"
+        }
+      ]
     }
   ],
   "redirects": [
     { "source": "/cv",        "destination": "/assets/pdf/Ishu_Singh_CV.pdf",        "permanent": false },
     { "source": "/portfolio", "destination": "/assets/pdf/Ishu_Singh_Portfolio.pdf", "permanent": false },
     { "source": "/mini-cv",   "destination": "/assets/pdf/Ishu_Singh_CV_Mini.pdf",   "permanent": false },
-    { "source": "/github",    "destination": "https://github.com/ishunteam-png",     "permanent": false }
+    { "source": "/github",    "destination": "https://github.com/ishunteam-png",     "permanent": false },
+    { "source": "/projects/haimcore.html",    "destination": "/#proj-01", "permanent": true },
+    { "source": "/projects/relief-guru.html", "destination": "/#proj-02", "permanent": true },
+    { "source": "/projects/jalaram.html",     "destination": "/#proj-03", "permanent": true },
+    { "source": "/projects/delhi.html",       "destination": "/#proj-04", "permanent": true },
+    { "source": "/projects/kite-beach.html",  "destination": "/#proj-05", "permanent": true }
   ]
 }
