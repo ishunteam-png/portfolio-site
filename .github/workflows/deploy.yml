@@ -1,0 +1,38 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      # ---- Vercel pulls project config + pulls env vars
+      - name: Vercel pull
+        run: |
+          vercel pull --yes --environment=production \
+            --token=${{ secrets.VERCEL_TOKEN }}
+
+      # ---- Build (it's a static site so this is a no-op; kept for future).
+      - name: Vercel build
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      # ---- Deploy
+      - name: Vercel deploy
+        run: |
+          vercel deploy --prebuilt --prod \
+            --token=${{ secrets.VERCEL_TOKEN }} > deploy_url.txt
+          echo "Deployed: $(cat deploy_url.txt)"

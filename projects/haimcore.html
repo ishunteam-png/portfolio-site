@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Haimcore - Ishu Singh</title>
+  <meta name="description"
+        content="Haimcore: Next.js AI workspace with Amirani assistant, across three releases with a deploy / rollback pipeline that keeps prod survivable." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body>
+
+<nav id="nav" class="nav">
+  <a href="../index.html" class="brand">
+    <span class="brand-dot"></span>
+    <span class="brand-name">Ishu Singh</span>
+    <span class="brand-meta">/ Project 01 - Haimcore</span>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html#work">All work</a>
+    <a href="../index.html#story">Story</a>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button id="cmdk-trigger" class="cmdk-hint" aria-label="Open command palette">
+      <span class="kbd">&#8984;</span><span class="kbd">K</span>
+    </button>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<main class="project-page">
+  <div class="container">
+
+    <a href="../index.html#work" class="crumb">&larr; All projects</a>
+
+    <div class="project-head">
+      <span class="project-code">01</span>
+      <span class="project-tag">AI Product</span>
+    </div>
+    <h1 class="project-title">Haimcore</h1>
+    <p class="project-sub">Next.js AI workspace with Amirani assistant</p>
+
+    <p class="project-elevator">
+      Operational AI-assisted workspace for the Haimcore team. Users dump
+      content into drafts, folders, notes, and specialised editors; Amirani
+      &mdash; the in-product assistant &mdash; summarises across it and
+      answers questions in context. Lead AI software engineer, freelance,
+      2025&ndash;2026.
+    </p>
+
+    <div class="project-numbers">
+      <div class="item"><span class="n">3</span><span class="l">Major releases</span></div>
+      <div class="item"><span class="n">47</span><span class="l">Languages supported</span></div>
+      <div class="item"><span class="n">v4</span><span class="l">UX overhaul</span></div>
+      <div class="item"><span class="n">0</span><span class="l">Downtime rollbacks</span></div>
+    </div>
+
+    <div class="project-body">
+      <span class="story-label">WHAT I BUILT</span>
+
+      <p>
+        I built this as a Next.js application (pages router) with the API
+        routes doubling as the back-end. The workspace is folders and drafts
+        on the left, an editor in the middle, an Ask-About panel on the
+        right. Specialised editors for text, URLs (with an Open-Graph fetch
+        that I had to put a small SSRF guard around), images (vision-model
+        description), and a &ldquo;Note Mode&rdquo; that attaches notes to a
+        specific folder or file.
+      </p>
+      <p>
+        Amirani is wired straight to Anthropic&rsquo;s SDK. Two small
+        headaches I had to work around: the shell environment on the EC2
+        host had an empty <code>ANTHROPIC_API_KEY=</code> exported that was
+        shadowing my <code>.env.local</code>, and a stale
+        <code>ANTHROPIC_BASE_URL=</code> from an older proxy experiment. I
+        wrote a tiny <code>resolveAnthropicKey()</code> in the legacy shim
+        that reads <code>.env.local</code> directly as a fallback and forces
+        the base URL to <code>api.anthropic.com</code> &mdash; saved me from
+        ever debugging that one again.
+      </p>
+      <p>
+        There&rsquo;s a small <i>insight</i> route that the image describer
+        and Ask-About panel both post into. It appends to
+        <code>data/memory/summary_default_&lt;date&gt;.md</code> so the next
+        Amirani call sees today&rsquo;s AI-generated content as context.
+        Closes the loop without me having to design a full memory store.
+      </p>
+
+      <div class="pull-quote">
+        &ldquo;I&rsquo;ve had to fall back to the snapshots once and
+        it was worth the discipline.&rdquo;
+      </div>
+
+      <p>
+        The legacy-shim pattern is worth describing because it has saved me
+        from a class of bugs. Anything that used to live at
+        <code>pages/api/&hellip;/foo.js</code> moves to
+        <code>lib/legacy/foo.js</code>, behind a thin v4 wrapper that adds
+        CSRF + session handling. Each shim is exercised by the smoke test
+        on every deploy, so an import-path break in a forgotten file shows
+        up before the deploy lands, not after.
+      </p>
+      <p>
+        Auto-save is a 1.5&thinsp;second idle trigger plus a final sync save
+        on editor unmount. There&rsquo;s an <code>onDraftRebind</code>
+        subscription so when a new draft swaps from a temporary optimistic
+        ID to its real DB id, every component holding that reference updates
+        without re-rendering or losing focus.
+      </p>
+      <p>
+        Multilingual support across 47 languages including aliases, so a
+        user can type the language in their own keyboard and the menu still
+        matches. Came up in the v3 release as a hard requirement from a
+        real client.
+      </p>
+      <p>
+        Deploy story: tagged pre-deploy snapshots, source-only bundles
+        uploaded to S3, a Postgres rollback instance kept around for the v4
+        cut-over as a safety net, a manual
+        <code>pre-rollback-backup-&lt;date&gt;</code> folder before any
+        destructive change to source.
+      </p>
+
+      <span class="story-label">THE BITS THAT BIT ME</span>
+
+      <p>
+        After the v4 file overlay, the Anthropic SDK install lost
+        <code>models.mjs</code> and a couple of beta resources &mdash; the
+        streaming endpoint then returned an unhelpful 500. Reinstalling
+        <code>@anthropic-ai/sdk@latest</code> fixed it, but I now reinstall
+        the SDK whenever I overlay a release rather than trusting the file
+        copy.
+      </p>
+      <p>
+        Two legacy shims (<code>system-health.js</code> + a missing
+        <code>workspace-synthesize.js</code>) had stale
+        <code>../../../lib/X</code> imports after their move. The build went
+        red, the cut-over paused. After fixing them I wrote a smoke check
+        that exercises every shim before declaring a deploy green.
+      </p>
+      <p>
+        Recovered a 729&nbsp;MB Downloads folder from the Recycle Bin
+        during an incident-response session. Worth saying out loud: I now
+        stash a daily zip of <code>haimcore/</code> outside the working
+        tree, because the Bin is not a backup.
+      </p>
+
+      <div class="project-stack">
+        <span>Next.js (pages)</span>
+        <span>Node.js</span>
+        <span>TypeScript</span>
+        <span>Anthropic SDK</span>
+        <span>Prisma + PostgreSQL</span>
+        <span>AWS EC2 + S3 + RDS</span>
+        <span>PowerShell deploy</span>
+      </div>
+    </div>
+
+    <nav class="project-nav">
+      <a href="../index.html#work">
+        <span class="nav-label">&larr; BACK</span>
+        <span>All projects</span>
+      </a>
+      <a href="relief-guru.html">
+        <span class="nav-label">NEXT &rarr;</span>
+        <span>02 / Relief Guru</span>
+      </a>
+    </nav>
+  </div>
+</main>
+
+<div id="cmdk-overlay" class="cmdk-overlay" hidden>
+  <div class="cmdk-panel" role="dialog" aria-modal="true">
+    <input type="text" id="cmdk-input" placeholder="Type to jump..." autocomplete="off" />
+    <ul id="cmdk-results" class="cmdk-results"></ul>
+    <div class="cmdk-footer">
+      <span><span class="kbd">&uarr;&darr;</span> navigate</span>
+      <span><span class="kbd">&crarr;</span> select</span>
+      <span><span class="kbd">esc</span> close</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/cmdk-project.js"></script>
+</body>
+</html>

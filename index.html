@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ishu Singh - AI / Automation Engineer, InSAR, Full-Stack</title>
+  <meta name="description"
+        content="Ishu Singh - AI software engineer based in Tbilisi, Georgia. Selected work across AI products (Haimcore), Telegram-driven n8n automation (Relief Guru), an AI hospital management system (Jalaram Hospital), and Sentinel-1 InSAR road-subsidence pilots (SATALITE)." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ishu Singh - AI / Automation Engineer" />
+  <meta property="og:description"
+        content="Selected work: Next.js AI workspace, n8n video pipeline, AI hospital management system, Sentinel-1 InSAR pilots." />
+  <meta property="og:image" content="assets/img/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/img/favicon-180.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <!-- Plausible analytics (stub - sign up at plausible.io and replace) -->
+  <script defer
+          data-domain="ishu-portfolio.vercel.app"
+          src="https://plausible.io/js/script.js"></script>
+</head>
+
+<body>
+
+<!-- ============================================================ NAV === -->
+<nav id="nav" class="nav">
+  <a href="#top" class="brand">
+    <span class="brand-dot"></span>
+    <span class="brand-name">Ishu Singh</span>
+    <span class="brand-meta">/ AI &middot; InSAR &middot; Full-Stack</span>
+  </a>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#story">Story</a>
+    <a href="#tech">Tech</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button id="cmdk-trigger" class="cmdk-hint" aria-label="Open command palette">
+      <span class="kbd">&#8984;</span><span class="kbd">K</span>
+    </button>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================================ HERO === -->
+<header id="top" class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      <span class="status-text">Open for remote freelance work</span>
+      <span class="status-sep">&middot;</span>
+      <span class="status-loc">Tbilisi, Georgia</span>
+    </div>
+
+    <h1 class="hero-name">Ishu Singh</h1>
+    <p class="hero-tagline">
+      <span class="accent">AI / Automation Engineer</span>
+      <span class="sep">&middot;</span>
+      <span>InSAR &amp; Geospatial</span>
+      <span class="sep">&middot;</span>
+      <span>Full-Stack Builder</span>
+    </p>
+
+    <div class="terminal" id="terminal" aria-label="Animated terminal showing introduction">
+      <div class="terminal-bar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="terminal-title">~/about-me  --  ishu@tbilisi</span>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <!-- typed into by terminal.js -->
+      </div>
+    </div>
+
+    <p class="hero-lead">
+      I build AI-assisted software and the plumbing around it &mdash; production
+      web apps, Telegram-driven workflow automations, healthcare platforms,
+      and scientific data pipelines. Comfortable across Python, TypeScript and
+      JavaScript; happiest when something needs to actually ship and stay up.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-primary">See the work &rarr;</a>
+      <a href="assets/pdf/Ishu_Singh_CV.pdf" class="btn btn-ghost"
+         download>Download CV (PDF)</a>
+      <a href="assets/pdf/Ishu_Singh_Portfolio.pdf" class="btn btn-ghost"
+         download>Download Portfolio</a>
+    </div>
+  </div>
+</header>
+
+<!-- ====================================================== METRICS === -->
+<section id="metrics" class="metrics">
+  <div class="container">
+    <div class="metric"><span class="m-num" data-target="5">0</span><span class="m-lbl">Live projects</span></div>
+    <div class="metric"><span class="m-num" data-target="2555">0</span><span class="m-lbl">Persistent Scatterers detected</span></div>
+    <div class="metric"><span class="m-num" data-target="7">0</span><span class="m-lbl">n8n workflows shipped</span></div>
+    <div class="metric"><span class="m-num" data-target="4">0</span><span class="m-lbl">User portals on Jalaram</span></div>
+    <div class="metric"><span class="m-num" data-target="47">0</span><span class="m-lbl">Languages on Haimcore</span></div>
+    <div class="metric"><span class="m-num" data-target="476">0</span><span class="m-lbl">SBAS interferograms processed</span></div>
+  </div>
+</section>
+
+<!-- ======================================================= WORK === -->
+<section id="work" class="work">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="section-kicker">SELECTED WORK</span>
+      Five projects, what they took, and what bit me.
+    </h2>
+
+    <div class="filter-bar" role="tablist" aria-label="Filter projects">
+      <button class="chip active" data-filter="all">All</button>
+      <button class="chip" data-filter="ai">AI Product</button>
+      <button class="chip" data-filter="automation">Automation</button>
+      <button class="chip" data-filter="healthcare">Healthcare</button>
+      <button class="chip" data-filter="insar">InSAR</button>
+    </div>
+
+    <div class="project-grid" id="project-grid">
+      <!-- Project 01 — Haimcore -->
+      <article class="card" data-category="ai">
+        <a class="card-link" href="projects/haimcore.html"></a>
+        <div class="card-head">
+          <span class="card-code">01</span>
+          <span class="card-tag">AI Product</span>
+        </div>
+        <h3 class="card-title">Haimcore</h3>
+        <p class="card-sub">Next.js AI workspace with Amirani assistant</p>
+        <p class="card-body">
+          Operational AI workspace built around Amirani, an in-product
+          assistant. Across three releases (v3 multilingual, v3.1 stability,
+          v4 UX overhaul) and a deploy / rollback pipeline that keeps
+          prod survivable.
+        </p>
+        <div class="card-metrics">
+          <span><b>3</b> releases</span>
+          <span><b>47</b> languages</span>
+          <span><b>0</b> downtime rollbacks</span>
+        </div>
+        <div class="card-stack">
+          <span>Next.js</span><span>Anthropic SDK</span>
+          <span>Prisma + Postgres</span><span>AWS EC2</span>
+        </div>
+        <span class="card-cta">Read the case study &rarr;</span>
+      </article>
+
+      <!-- Project 02 — Relief Guru -->
+      <article class="card" data-category="automation"
+               data-reel="assets/img/relief_guru_arch.png">
+        <a class="card-link" href="projects/relief-guru.html"></a>
+        <div class="card-thumb" aria-hidden="true"></div>
+        <div class="card-head">
+          <span class="card-code">02</span>
+          <span class="card-tag">Automation</span>
+        </div>
+        <h3 class="card-title">Relief Guru</h3>
+        <p class="card-sub">Telegram-driven AI avatar video pipeline</p>
+        <p class="card-body">
+          A pharmacy-content business publishes AI avatar videos to YouTube,
+          LinkedIn and Instagram, controlled from Telegram. Seven coordinated
+          n8n workflows so every failure is traceable to a single workflow ID.
+        </p>
+        <div class="card-metrics">
+          <span><b>7</b> n8n workflows</span>
+          <span><b>3</b> social channels</span>
+          <span>HeyGen + Pinecone</span>
+        </div>
+        <div class="card-stack">
+          <span>n8n V4</span><span>HeyGen</span>
+          <span>OpenAI embeddings</span><span>Pinecone</span>
+          <span>Telegram</span>
+        </div>
+        <span class="card-cta">Read the case study &rarr;</span>
+      </article>
+
+      <!-- Project 03 — Jalaram -->
+      <article class="card card-wide" data-category="healthcare">
+        <a class="card-link" href="projects/jalaram.html"></a>
+        <div class="card-head">
+          <span class="card-code">03</span>
+          <span class="card-tag">Healthcare</span>
+          <a class="card-pill" href="https://shreejalaramhospital.live"
+             target="_blank" rel="noopener">
+            <span class="pulse"></span>shreejalaramhospital.live
+          </a>
+        </div>
+        <h3 class="card-title">Jalaram Hospital</h3>
+        <p class="card-sub">AI hospital management system, four portals</p>
+        <p class="card-body">
+          Live AI-assisted hospital platform for a women&rsquo;s health clinic.
+          Patient, Doctor, Staff and Admin portals over a single backend, a
+          GPT-4o clinical Copilot with tool calling against the Postgres
+          schema, daily AI insights for doctors, and a data model shaped
+          around Gynaecology and Obstetrics.
+        </p>
+        <div class="card-metrics">
+          <span><b>4</b> portals</span>
+          <span><b>12</b> Prisma models</span>
+          <span>GPT-4o + tool calls</span>
+        </div>
+        <div class="card-stack">
+          <span>Express 5 + TS</span><span>Prisma 6 + Postgres</span>
+          <span>React + Vite</span><span>OpenAI GPT-4o</span>
+          <span>AWS S3 + EC2</span><span>Docker + Nginx + PM2</span>
+        </div>
+        <span class="card-cta">Read the case study &rarr;</span>
+      </article>
+
+      <!-- Project 04 — SATALITE Delhi -->
+      <article class="card" data-category="insar"
+               data-reel="assets/img/delhi_velocity_dual_panel.png,assets/img/delhi_decomp_scatter.png,assets/img/delhi_timeseries.png">
+        <a class="card-link" href="projects/delhi.html"></a>
+        <div class="card-thumb" aria-hidden="true"></div>
+        <div class="card-head">
+          <span class="card-code">04</span>
+          <span class="card-tag">InSAR</span>
+        </div>
+        <h3 class="card-title">SATALITE Delhi</h3>
+        <p class="card-sub">Strict EGMS-L3 road-subsidence pilot</p>
+        <p class="card-body">
+          A strict EGMS-L3 equivalent road-subsidence map at Najafgarh Road,
+          SW Delhi &mdash; vertical and east-west deformation per pixel,
+          ITRF14 absolute frame, ERA5 atmospheric correction, two-track
+          decomposition. End to end on a local Linux workstation.
+        </p>
+        <div class="card-metrics">
+          <span><b>2,555</b> PS</span>
+          <span><b>476</b> SBAS pairs</span>
+          <span><b>~2 mm</b> residual RMS</span>
+        </div>
+        <div class="card-stack">
+          <span>Sentinel-1</span><span>SNAP</span>
+          <span>MintPy + SNAPHU</span><span>PyAPS3 / ERA5</span>
+          <span>ITRF14 PMM</span>
+        </div>
+        <span class="card-cta">Read the case study &rarr;</span>
+      </article>
+
+      <!-- Project 05 — SATALITE Kite Beach -->
+      <article class="card" data-category="insar"
+               data-reel="assets/img/kite_beach_velocity.png,assets/img/kite_beach_cumulative.png">
+        <a class="card-link" href="projects/kite-beach.html"></a>
+        <div class="card-thumb" aria-hidden="true"></div>
+        <div class="card-head">
+          <span class="card-code">05</span>
+          <span class="card-tag">InSAR</span>
+        </div>
+        <h3 class="card-title">SATALITE Kite Beach</h3>
+        <p class="card-sub">L2-equivalent single-track Sentinel-1 pilot</p>
+        <p class="card-body">
+          First InSAR pilot for SATALITE. Sentinel-1 road-subsidence
+          monitoring at Kite Beach Road, Visakhapatnam. Descending-only by
+          necessity &mdash; the site sits in a known Sentinel-1 ascending
+          gap. The pilot that validated the pipeline before strict-L3 Delhi.
+        </p>
+        <div class="card-metrics">
+          <span><b>152</b> PS</span>
+          <span><b>244</b> SBAS pairs</span>
+          <span><b>~5 mm</b> RMSE</span>
+        </div>
+        <div class="card-stack">
+          <span>Sentinel-1</span><span>ASF HyP3</span>
+          <span>MintPy SBAS</span><span>Streamlit</span>
+        </div>
+        <span class="card-cta">Read the case study &rarr;</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== STORY === -->
+<section id="story" class="story">
+  <div class="container two-col">
+    <div>
+      <h2 class="section-title">
+        <span class="section-kicker">WHO I AM</span>
+        I build AI-assisted software and the plumbing around it.
+      </h2>
+      <p>
+        Production web apps, Telegram-driven workflow automations, healthcare
+        platforms, and scientific data pipelines. Comfortable across Python,
+        TypeScript and JavaScript; comfortable on AWS; happiest when something
+        needs to actually ship and stay up.
+      </p>
+      <p>
+        Recently I picked up InSAR / Sentinel-1 SAR processing from scratch and
+        delivered a strict EGMS-L3 equivalent road-subsidence pilot on a
+        3-year stack &mdash; the kind of project that mixes a lot of
+        engineering with quite a bit of careful science.
+      </p>
+    </div>
+    <div>
+      <h3 class="h3-kicker">How I work</h3>
+      <ul class="principles">
+        <li>
+          <b>Bias to shipping.</b>
+          <span>I&rsquo;d rather get a v0 in front of the user this week and
+          learn what&rsquo;s actually wrong than spend a month polishing the
+          v3 of someone&rsquo;s spec.</span>
+        </li>
+        <li>
+          <b>Defensive at the seams, light in the middle.</b>
+          <span>Where my code meets a third-party API or an LLM, I hard-fail
+          with the actual thing that broke. Inside the code I trust myself.</span>
+        </li>
+        <li>
+          <b>Audit logs over comments.</b>
+          <span>Useful comments are about <i>why</i>. But what I really care
+          about is being able to reconstruct what happened &mdash; SystemLog
+          on hospital, run trackers on Relief Guru, audit folders per release
+          on Haimcore.</span>
+        </li>
+        <li>
+          <b>Hedging is honest.</b>
+          <span>If a parameter I&rsquo;ve picked won&rsquo;t generalise outside
+          the case I had in front of me, I say so in the report. Better than
+          the client finding out the hard way.</span>
+        </li>
+        <li>
+          <b>Make the un-fun parts repeatable.</b>
+          <span>Deploy scripts, smoke tests, rollback paths, idempotency
+          guards. Everything that bit me once gets a guard rail.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== TECH === -->
+<section id="tech" class="tech">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="section-kicker">TECH I LEAN ON</span>
+      The toolkit, sorted by what I reach for.
+    </h2>
+
+    <div class="tech-grid">
+      <div class="tech-block">
+        <h4>Languages</h4>
+        <div class="tags">
+          <span>Python</span><span>TypeScript</span>
+          <span>JavaScript</span><span>Java</span>
+        </div>
+      </div>
+      <div class="tech-block">
+        <h4>AI &amp; LLMs</h4>
+        <div class="tags">
+          <span>OpenAI APIs</span><span>GPT-4o</span>
+          <span>Anthropic SDK</span><span>LangChain</span>
+          <span>Pinecone (vector)</span><span>RAG</span>
+          <span>Prompt engineering</span>
+        </div>
+      </div>
+      <div class="tech-block">
+        <h4>InSAR / Geospatial</h4>
+        <div class="tags">
+          <span>Sentinel-1 SAR</span><span>SNAP / ESA STEP</span>
+          <span>MintPy SBAS</span><span>SNAPHU</span>
+          <span>PyAPS3 / ERA5</span><span>ASF HyP3</span>
+          <span>ITRF14 / PMM</span><span>GeoPandas</span>
+          <span>GDAL</span><span>QGIS</span><span>Streamlit</span>
+        </div>
+      </div>
+      <div class="tech-block">
+        <h4>Cloud &amp; ops</h4>
+        <div class="tags">
+          <span>AWS (EC2, S3, RDS, IAM, Lambda)</span>
+          <span>Docker</span><span>docker-compose</span>
+          <span>Nginx</span><span>PM2</span><span>Serverless</span>
+        </div>
+      </div>
+      <div class="tech-block">
+        <h4>Backend &amp; APIs</h4>
+        <div class="tags">
+          <span>Node.js</span><span>Express 5</span>
+          <span>FastAPI</span><span>Next.js (pages)</span>
+          <span>REST</span><span>JWT</span><span>bcrypt</span>
+          <span>helmet</span>
+        </div>
+      </div>
+      <div class="tech-block">
+        <h4>Frontend</h4>
+        <div class="tags">
+          <span>React</span><span>Vite</span><span>TypeScript</span>
+          <span>Next.js</span><span>Streamlit</span><span>Plotly</span>
+        </div>
+      </div>
+      <div class="tech-block">
+        <h4>Data</h4>
+        <div class="tags">
+          <span>PostgreSQL</span><span>Prisma 6 ORM</span>
+          <span>MongoDB</span><span>Redis</span>
+          <span>Firebase</span><span>Pinecone (vector)</span>
+        </div>
+      </div>
+      <div class="tech-block">
+        <h4>Automation</h4>
+        <div class="tags">
+          <span>n8n (multi-workflow)</span><span>Telegram Bot API</span>
+          <span>Make.com</span><span>Zapier</span>
+          <span>Webhooks</span><span>Event-driven</span>
+        </div>
+      </div>
+      <div class="tech-block">
+        <h4>Integrations</h4>
+        <div class="tags">
+          <span>OpenAI</span><span>Anthropic</span>
+          <span>HeyGen</span><span>Creatomate</span>
+          <span>Pinecone</span><span>Google Workspace APIs</span>
+          <span>LinkedIn Developer APIs</span><span>ASF Vertex</span>
+          <span>ESA Copernicus</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== CONTACT === -->
+<section id="contact" class="contact">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="section-kicker">WORKING WITH ME</span>
+      Open for remote and freelance engagements globally.
+    </h2>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <p class="contact-body">
+          Most comfortable on AI-assisted product work, automation pipelines,
+          full-stack TypeScript / Python, and geospatial processing &mdash;
+          ideally where some part of the problem hasn&rsquo;t been solved
+          cleanly before and the engineering judgement matters as much as
+          the code.
+        </p>
+        <ul class="contact-list">
+          <li>
+            <span class="lbl">Email</span>
+            <a href="mailto:singhishu2060@gmail.com">singhishu2060@gmail.com</a>
+          </li>
+          <li>
+            <span class="lbl">Phone</span>
+            <span>+995 555 114 467</span>
+          </li>
+          <li>
+            <span class="lbl">Based in</span>
+            <span>Tbilisi, Georgia</span>
+          </li>
+          <li>
+            <span class="lbl">GitHub</span>
+            <a href="https://github.com/ishunteam-png"
+               target="_blank" rel="noopener">github.com/ishunteam-png</a>
+          </li>
+          <li>
+            <span class="lbl">Languages</span>
+            <span>English (Fluent) &middot; Hindi (Native)
+              &middot; Gujarati (Native) &middot;
+              Georgian (Conversational)</span>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact-form" action="https://formspree.io/f/your-form-id"
+            method="POST">
+        <h3>Send a quick note</h3>
+        <p class="form-note">
+          Goes straight to my inbox. Replace the Formspree endpoint above
+          when you sign up; the mailto link is the no-account fallback.
+        </p>
+        <label>
+          <span>Your name</span>
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          <span>What&rsquo;s on your mind?</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== FOOTER === -->
+<footer class="footer">
+  <div class="container footer-row">
+    <span>&copy; 2026 Ishu Singh.</span>
+    <span class="dim">Built with HTML, CSS &amp; a little JavaScript.</span>
+    <span class="dim">No frameworks were harmed in the making of this site.</span>
+  </div>
+</footer>
+
+<!-- ================================================== SIDE RAIL === -->
+<aside class="side-rail" id="side-rail" aria-label="Section navigation">
+  <a href="#top"     class="rail-dot" data-section="top"     data-title="Top"></a>
+  <a href="#metrics" class="rail-dot" data-section="metrics" data-title="Metrics"></a>
+  <a href="#work"    class="rail-dot" data-section="work"    data-title="Work"></a>
+  <a href="#story"   class="rail-dot" data-section="story"   data-title="Story"></a>
+  <a href="#tech"    class="rail-dot" data-section="tech"    data-title="Tech"></a>
+  <a href="#contact" class="rail-dot" data-section="contact" data-title="Contact"></a>
+</aside>
+
+<!-- ================================================== CMD-K === -->
+<div id="cmdk-overlay" class="cmdk-overlay" hidden>
+  <div class="cmdk-panel" role="dialog" aria-modal="true"
+       aria-label="Command palette">
+    <input type="text" id="cmdk-input" placeholder="Type to jump..."
+           autocomplete="off" />
+    <ul id="cmdk-results" class="cmdk-results"></ul>
+    <div class="cmdk-footer">
+      <span><span class="kbd">&uarr;&darr;</span> navigate</span>
+      <span><span class="kbd">&crarr;</span> select</span>
+      <span><span class="kbd">esc</span> close</span>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/terminal.js"></script>
+<script src="assets/js/counters.js"></script>
+<script src="assets/js/filters.js"></script>
+<script src="assets/js/reels.js"></script>
+<script src="assets/js/cmdk.js"></script>
+
+</body>
+</html>

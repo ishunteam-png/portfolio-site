@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Relief Guru - Ishu Singh</title>
+  <meta name="description"
+        content="Relief Guru: Telegram-driven AI avatar video pipeline. Seven coordinated n8n workflows. HeyGen, Pinecone, OpenAI." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <style>
+    /* Architecture diagram - animated SVG */
+    .arch-svg { font-family: "Inter", sans-serif; }
+    .arch-svg .node-bg { fill: var(--bg); stroke: var(--accent); stroke-width: 1.4; }
+    .arch-svg .node-bg-warm { fill: var(--bg); stroke: var(--warm); stroke-width: 1.4; }
+    .arch-svg .node-bg-mute { fill: var(--bg); stroke: var(--ink-dim); stroke-width: 1; }
+    .arch-svg .node-title { fill: var(--ink); font-size: 13px; font-weight: 700; }
+    .arch-svg .node-sub   { fill: var(--ink-mute); font-size: 10.5px; }
+    .arch-svg .flow { stroke: var(--accent); stroke-width: 1.6; fill: none;
+                     stroke-dasharray: 6 4; animation: dash 1.4s linear infinite; }
+    .arch-svg .flow-warm { stroke: var(--warm); stroke-width: 1.6; fill: none;
+                          stroke-dasharray: 6 4; animation: dash 1.4s linear infinite; }
+    .arch-svg .arrow-head { fill: var(--accent); }
+    .arch-svg .arrow-head-warm { fill: var(--warm); }
+    .arch-svg .title { fill: var(--ink); font-size: 17px; font-weight: 700; }
+    .arch-svg .subtitle { fill: var(--ink-mute); font-size: 11.5px; font-style: italic; }
+    @keyframes dash { to { stroke-dashoffset: -20; } }
+  </style>
+</head>
+<body>
+
+<nav id="nav" class="nav">
+  <a href="../index.html" class="brand">
+    <span class="brand-dot"></span>
+    <span class="brand-name">Ishu Singh</span>
+    <span class="brand-meta">/ Project 02 - Relief Guru</span>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html#work">All work</a>
+    <a href="../index.html#story">Story</a>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button id="cmdk-trigger" class="cmdk-hint">
+      <span class="kbd">&#8984;</span><span class="kbd">K</span>
+    </button>
+    <button id="theme-toggle" class="theme-toggle">
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<main class="project-page">
+  <div class="container">
+
+    <a href="../index.html#work" class="crumb">&larr; All projects</a>
+
+    <div class="project-head">
+      <span class="project-code">02</span>
+      <span class="project-tag">Automation</span>
+    </div>
+    <h1 class="project-title">Relief Guru</h1>
+    <p class="project-sub">Telegram-driven AI avatar video pipeline</p>
+
+    <p class="project-elevator">
+      A pharmacy-content business needed to publish AI avatar videos across
+      YouTube, LinkedIn and Instagram, controlled from Telegram so
+      non-developers can run it. I built that pipeline as seven coordinated
+      n8n workflows. AI automation engineer, freelance, 2025&ndash;2026.
+    </p>
+
+    <div class="project-numbers">
+      <div class="item"><span class="n">7</span><span class="l">n8n workflows</span></div>
+      <div class="item"><span class="n">3</span><span class="l">Social channels</span></div>
+      <div class="item"><span class="n">40x30s</span><span class="l">HeyGen poll cap</span></div>
+      <div class="item"><span class="n">v4</span><span class="l">Current rev</span></div>
+    </div>
+
+    <!-- Animated SVG architecture diagram -->
+    <div class="arch-wrap">
+      <svg class="arch-svg" viewBox="0 0 1100 540" preserveAspectRatio="xMidYMid meet">
+        <text x="550" y="26" text-anchor="middle" class="title">
+          Relief Guru V4 - 7-workflow n8n architecture
+        </text>
+        <text x="550" y="46" text-anchor="middle" class="subtitle">
+          Telegram intake &rarr; script &rarr; avatar video &rarr; approval &rarr; publish &rarr; track
+        </text>
+
+        <!-- arrow marker -->
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-head"/>
+          </marker>
+          <marker id="arrow-warm" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-head-warm"/>
+          </marker>
+        </defs>
+
+        <!-- Top row -->
+        <!-- Telegram bot -->
+        <rect class="node-bg-warm" x="20"  y="70"  width="160" height="60" rx="8"/>
+        <text x="100" y="98"  class="node-title" text-anchor="middle">Telegram bot</text>
+        <text x="100" y="115" class="node-sub"   text-anchor="middle">operator chat</text>
+
+        <!-- WF1A -->
+        <rect class="node-bg" x="220" y="70" width="170" height="60" rx="8"/>
+        <text x="305" y="93"  class="node-title" text-anchor="middle">WF1A  Intake Router</text>
+        <text x="305" y="110" class="node-sub"   text-anchor="middle">slash commands</text>
+        <text x="305" y="124" class="node-sub"   text-anchor="middle">admin whitelist</text>
+
+        <!-- WF1B -->
+        <rect class="node-bg" x="430" y="70" width="180" height="60" rx="8"/>
+        <text x="520" y="93"  class="node-title" text-anchor="middle">WF1B  Script Generator</text>
+        <text x="520" y="110" class="node-sub"   text-anchor="middle">OpenAI embed</text>
+        <text x="520" y="124" class="node-sub"   text-anchor="middle">Pinecone &rarr; GPT</text>
+
+        <!-- WF2A -->
+        <rect class="node-bg" x="650" y="70" width="180" height="60" rx="8"/>
+        <text x="740" y="93"  class="node-title" text-anchor="middle">WF2A  HeyGen Video</text>
+        <text x="740" y="110" class="node-sub"   text-anchor="middle">defensive parser</text>
+        <text x="740" y="124" class="node-sub"   text-anchor="middle">poll loop</text>
+
+        <!-- HeyGen -->
+        <rect class="node-bg-mute" x="870" y="70" width="120" height="60" rx="8"/>
+        <text x="930" y="98"  class="node-title" text-anchor="middle">HeyGen</text>
+        <text x="930" y="115" class="node-sub"   text-anchor="middle">v2 API</text>
+
+        <!-- Top flow arrows -->
+        <path class="flow" d="M 180 100 L 220 100" marker-end="url(#arrow)"/>
+        <path class="flow" d="M 390 100 L 430 100" marker-end="url(#arrow)"/>
+        <path class="flow" d="M 610 100 L 650 100" marker-end="url(#arrow)"/>
+        <path class="flow" d="M 830 100 L 870 100" marker-end="url(#arrow)"/>
+
+        <!-- External services row -->
+        <rect class="node-bg-mute" x="430" y="200" width="180" height="50" rx="8"/>
+        <text x="520" y="223" class="node-title" text-anchor="middle">Pinecone (vector)</text>
+        <text x="520" y="240" class="node-sub"   text-anchor="middle">templates + tracker memory</text>
+
+        <rect class="node-bg-mute" x="650" y="200" width="180" height="50" rx="8"/>
+        <text x="740" y="223" class="node-title" text-anchor="middle">OpenAI</text>
+        <text x="740" y="240" class="node-sub"   text-anchor="middle">embeddings + chat</text>
+
+        <path class="flow" d="M 520 130 L 520 200" marker-end="url(#arrow)"/>
+        <path class="flow" d="M 580 130 L 720 200" marker-end="url(#arrow)"/>
+
+        <!-- Sticky message return flow -->
+        <path class="flow-warm" d="M 740 70 Q 380 30 100 70"
+              marker-end="url(#arrow-warm)"/>
+        <text x="420" y="36" class="node-sub" fill="var(--warm)" font-style="italic">
+          sticky-message progress
+        </text>
+
+        <!-- Bottom row -->
+        <!-- Operator approves -->
+        <rect class="node-bg-warm" x="20"  y="320" width="160" height="60" rx="8"/>
+        <text x="100" y="348" class="node-title" text-anchor="middle">Operator</text>
+        <text x="100" y="365" class="node-sub"   text-anchor="middle">approves in Telegram</text>
+
+        <!-- WF2A↔WF2B -->
+        <rect class="node-bg" x="220" y="320" width="170" height="60" rx="8"/>
+        <text x="305" y="343" class="node-title" text-anchor="middle">WF2A&#8596;WF2B</text>
+        <text x="305" y="360" class="node-sub"   text-anchor="middle">approval bridge</text>
+
+        <!-- WF2B -->
+        <rect class="node-bg" x="430" y="320" width="180" height="60" rx="8"/>
+        <text x="520" y="343" class="node-title" text-anchor="middle">WF2B  Posting Core</text>
+        <text x="520" y="360" class="node-sub"   text-anchor="middle">native multi-platform</text>
+
+        <!-- Social platforms -->
+        <rect class="node-bg-mute" x="650" y="320" width="105" height="60" rx="8"/>
+        <text x="702" y="348" class="node-title" text-anchor="middle">YouTube</text>
+        <text x="702" y="365" class="node-sub"   text-anchor="middle">via Google API</text>
+
+        <rect class="node-bg-mute" x="765" y="320" width="105" height="60" rx="8"/>
+        <text x="817" y="348" class="node-title" text-anchor="middle">LinkedIn</text>
+        <text x="817" y="365" class="node-sub"   text-anchor="middle">via LI API</text>
+
+        <rect class="node-bg-mute" x="880" y="320" width="105" height="60" rx="8"/>
+        <text x="932" y="348" class="node-title" text-anchor="middle">Instagram</text>
+        <text x="932" y="365" class="node-sub"   text-anchor="middle">via Meta API</text>
+
+        <path class="flow" d="M 100 130 L 100 320" marker-end="url(#arrow)"/>
+        <path class="flow" d="M 180 350 L 220 350" marker-end="url(#arrow)"/>
+        <path class="flow" d="M 390 350 L 430 350" marker-end="url(#arrow)"/>
+        <path class="flow" d="M 610 350 L 650 350" marker-end="url(#arrow)"/>
+        <path class="flow" d="M 610 360 L 765 360" marker-end="url(#arrow)"/>
+        <path class="flow" d="M 610 370 L 880 370" marker-end="url(#arrow)"/>
+        <path class="flow" d="M 740 130 Q 600 200 520 320" marker-end="url(#arrow)"/>
+
+        <!-- WF3 Tracker wrapping -->
+        <rect class="node-bg-warm" x="220" y="450" width="540" height="60" rx="8"/>
+        <text x="490" y="478" class="node-title" text-anchor="middle">WF3  Tracker Engine</text>
+        <text x="490" y="495" class="node-sub"   text-anchor="middle">every step &rarr; Pinecone for retrieval</text>
+
+        <path class="flow-warm" d="M 305 380 L 305 450" marker-end="url(#arrow-warm)"/>
+        <path class="flow-warm" d="M 520 380 L 520 450" marker-end="url(#arrow-warm)"/>
+        <path class="flow-warm" d="M 720 380 L 680 450" marker-end="url(#arrow-warm)"/>
+
+        <!-- Layout Callback -->
+        <rect class="node-bg-mute" x="800" y="450" width="190" height="60" rx="8"/>
+        <text x="895" y="478" class="node-title" text-anchor="middle">Layout Callback</text>
+        <text x="895" y="495" class="node-sub"   text-anchor="middle">UI state handler</text>
+      </svg>
+    </div>
+
+    <div class="project-body">
+      <span class="story-label">WHAT I BUILT</span>
+
+      <p>
+        <b>Why seven workflows.</b> The first version (V1) was one giant n8n
+        workflow with branching logic and &ldquo;sub-functions&rdquo; called
+        by HTTP. It worked until the day it didn&rsquo;t, and when it broke
+        I couldn&rsquo;t tell whether the failure was at intake, at script
+        generation, at HeyGen, or at posting. V4 splits it into
+        single-purpose webhooks &mdash; every step lives in its own workflow
+        with its own logs.
+      </p>
+      <p>
+        <b>WF1A &mdash; Intake Router.</b> Telegram webhook into n8n. Admin
+        whitelist by chat&nbsp;ID. Slash-command parser:
+        <code>/start, /help, /avatars, /voices, /templates, /new,
+        /refresh_avatars, /refresh_voices, /status, /last, /company</code>.
+        Routes the request into the right downstream workflow with a stable
+        <code>run_id</code>.
+      </p>
+      <p>
+        <b>WF1B &mdash; Template + Script Generator.</b> Take the brief,
+        embed it with OpenAI <code>text-embedding-3-small</code>, query
+        Pinecone against the <i>templates</i> namespace. Top-10 normally,
+        top-100 if the operator gave a template hint, optional
+        <code>content_purpose</code> filter. GPT writes the script against
+        the closest template, the operator gets it back in Telegram for
+        review.
+      </p>
+      <p>
+        <b>WF2A &mdash; HeyGen Video Generation.</b> The hairy one. Studio
+        app posts a payload that, depending on which trigger fired, has the
+        script under <code>body.script</code>,
+        <code>body.video_inputs[0].voice.input_text</code>,
+        <code>body.text</code>, or somewhere else. I wrote a
+        <i>Parse Studio Payload</i> node that probes every reasonable path
+        and, as a last-ditch, walks the whole payload looking for a string
+        field with a name like script / text / input_text longer than 20
+        characters. If it doesn&rsquo;t find one it hard-fails locally with
+        the keys it saw &mdash; way better than letting HeyGen respond with
+        an opaque &ldquo;Bad request&rdquo; 90 seconds later. Same approach
+        for <code>avatar_id</code> and <code>voice_id</code> &mdash; guard
+        on length&nbsp;&ge;&nbsp;6 before HeyGen ever sees it.
+      </p>
+      <p>
+        <b>Idempotency guard.</b> n8n&rsquo;s static workflow data stores
+        <code>run_id &rarr; timestamp</code> for in-flight runs. A duplicate
+        <code>run_id</code> within 30 minutes throws. Cleared lazily on
+        every entry. Prevents Telegram retries (or the operator clicking a
+        button twice) from spawning a second HeyGen render.
+      </p>
+      <p>
+        <b>Sticky messages.</b> Rather than spamming the chat with
+        &ldquo;recording&hellip; rendering&hellip; uploading&hellip;
+        posted&rdquo;, the workflow edits a single Telegram message in
+        place. Same <code>message_id</code> for the lifecycle of the task.
+        Looks like a progress bar in the chat.
+      </p>
+      <p>
+        <b>HeyGen poll loop.</b> 30-second cadence, max 40 attempts (~20
+        minutes). The script-cleaning step strips zero-width characters,
+        smart quotes, HTML tags, markdown, and stage-directions in
+        brackets/parens/braces. Truncates at the last sentence end below
+        the 1500-character HeyGen cap.
+      </p>
+      <p>
+        <b>WF2A&#8596;WF2B &mdash; Approval Bridge.</b> Once HeyGen is
+        done, the operator approves in Telegram. Approval token is signed;
+        no spoofing.
+      </p>
+      <p>
+        <b>WF2B &mdash; Posting Core (native).</b> Google Developer Console
+        for Drive + YouTube; LinkedIn Developer Console for the LinkedIn
+        post; Instagram via Meta API. Each posting is its own retry-safe
+        sub-flow.
+      </p>
+      <p>
+        <b>WF3 &mdash; Tracker Engine.</b> Every step in every run logs a
+        row with <code>task_id, trace_id, log_type, workflow_id, step,
+        status, state, embed_text</code>. The <code>embed_text</code>
+        (first 500 chars of the script if available, otherwise the topic)
+        goes back into Pinecone so the next run can retrieve &ldquo;what
+        did we say about this topic last time&rdquo;.
+      </p>
+
+      <div class="pull-quote">
+        &ldquo;V1 was one giant n8n workflow. Splitting it into seven
+        single-purpose webhooks made every failure traceable to a single
+        workflow ID.&rdquo;
+      </div>
+
+      <span class="story-label">THE BITS THAT BIT ME</span>
+
+      <p>
+        HeyGen used to fail silently because <code>input_text</code> was
+        empty &mdash; the script was nested deeper in the payload than the
+        parser knew about. After two of these I rewrote the parser to be
+        paranoid and label each rev in the comments. Last revision is
+        <code>v2026-05-03 rev2</code>.
+      </p>
+      <p>
+        Telegram&rsquo;s <i>Edit Sticky</i> HTTP node returns its own
+        <code>{ok, result, &hellip;}</code> object, which then becomes
+        <code>$json</code> for the next code node. I lost ~30 minutes
+        before realising the &ldquo;script missing&rdquo; error was
+        actually the upstream context being shadowed. Now
+        <i>Clean Script</i> explicitly reaches back to
+        <i>Code: Idempotency Guard</i> and
+        <i>Code: Parse Studio Payload</i> by name if
+        <code>$input</code> doesn&rsquo;t have what it expects.
+      </p>
+      <p>
+        Operationally, the seven-workflow split is more code but less
+        rework. The whole point is that the next time <i>posting to
+        LinkedIn</i> breaks at 11&thinsp;pm, the operator sees
+        &ldquo;WF2B failed&rdquo; in Telegram instead of a 60-node n8n
+        trace.
+      </p>
+
+      <div class="project-stack">
+        <span>n8n (V4)</span><span>Telegram Bot API</span>
+        <span>HeyGen v2 API</span><span>Creatomate</span>
+        <span>OpenAI embeddings</span><span>Pinecone (vector)</span>
+        <span>Google &amp; LinkedIn Developer Consoles</span>
+        <span>JavaScript + JSON</span><span>Webhooks</span>
+      </div>
+    </div>
+
+    <nav class="project-nav">
+      <a href="haimcore.html">
+        <span class="nav-label">&larr; PREV</span>
+        <span>01 / Haimcore</span>
+      </a>
+      <a href="jalaram.html">
+        <span class="nav-label">NEXT &rarr;</span>
+        <span>03 / Jalaram Hospital</span>
+      </a>
+    </nav>
+  </div>
+</main>
+
+<div id="cmdk-overlay" class="cmdk-overlay" hidden>
+  <div class="cmdk-panel" role="dialog" aria-modal="true">
+    <input type="text" id="cmdk-input" placeholder="Type to jump..." autocomplete="off" />
+    <ul id="cmdk-results" class="cmdk-results"></ul>
+    <div class="cmdk-footer">
+      <span><span class="kbd">&uarr;&darr;</span> navigate</span>
+      <span><span class="kbd">&crarr;</span> select</span>
+      <span><span class="kbd">esc</span> close</span>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/cmdk-project.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+.vercel
+.DS_Store
+node_modules
+*.log
+*.tmp
+*.swp
+.env*
+!.env.example
+__pycache__/
+*.pyc
