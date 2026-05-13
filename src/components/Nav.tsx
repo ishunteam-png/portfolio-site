@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { MagneticButton } from "./MagneticButton";
+import { ScrambleText } from "./ScrambleText";
 
 interface Props {
   onCmdKOpen: () => void;
@@ -36,14 +37,18 @@ export function Nav({ onCmdKOpen }: Props) {
             href={`#proj-${c}`}
             className="hover:text-lime transition-colors relative group"
           >
-            §{c}
+            <ScrambleText>{"§" + c}</ScrambleText>
             <span className="absolute -bottom-1 left-0 right-0 h-px bg-lime
                              scale-x-0 group-hover:scale-x-100 origin-left
                              transition-transform" />
           </a>
         ))}
-        <a href="#how"     className="hover:text-lime transition-colors">how</a>
-        <a href="#contact" className="hover:text-lime transition-colors">contact</a>
+        <a href="#how" className="hover:text-lime transition-colors">
+          <ScrambleText>how</ScrambleText>
+        </a>
+        <a href="#contact" className="hover:text-lime transition-colors">
+          <ScrambleText>contact</ScrambleText>
+        </a>
       </div>
 
       <div className="flex items-center gap-2">

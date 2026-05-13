@@ -11,6 +11,7 @@ import { SideRail } from "./components/SideRail";
 import { CmdK } from "./components/CmdK";
 import { CustomCursor } from "./components/CustomCursor";
 import { ScrollProgress } from "./components/ScrollProgress";
+import { HintPill } from "./components/HintPill";
 import { PROJECTS } from "./data/projects";
 
 export default function App() {
@@ -51,6 +52,7 @@ export default function App() {
       <Contact />
       <Footer />
       <SideRail />
+      <HintPill />
       <CmdK open={cmdkOpen} onClose={() => setCmdkOpen(false)} />
     </>
   );

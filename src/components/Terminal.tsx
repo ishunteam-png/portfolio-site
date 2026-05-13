@@ -1,67 +1,69 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const SCRIPT: Array<{ cmd: string; out: string[] }> = [
-  {
-    cmd: "whoami",
-    out: ["ishu @ tbilisi : ai / automation engineer, geospatial, full-stack"],
-  },
-  {
-    cmd: "ls -la ~/work --recent",
-    out: [
-      "haimcore        next.js  +  anthropic sdk  +  postgres",
-      "relief-guru     n8n (v4) -  7 workflows  -  telegram driven",
-      "jalaram         hms  +  gpt-4o copilot  -  LIVE in prod",
-      "satalite-delhi  sentinel-1 insar  -  2,555 PS  -  ITRF14",
-      "satalite-kbeach sentinel-1 insar  -  152 PS  -  validation pilot",
-    ],
-  },
-  {
-    cmd: "cat status.txt",
-    out: [
-      "open for remote / freelance globally.",
-      "comfortable with AI-assisted products,",
-      "automation, full-stack TS / Python,",
-      "and geospatial pipelines.",
-    ],
-  },
-  {
-    cmd: "echo 'lets build something'",
-    out: ["lets build something"],
-  },
+type Line =
+  | { kind: "prompt"; cmd: string }
+  | { kind: "ok";     label: string;  text: string;  hl?: string }
+  | { kind: "blank" }
+  | { kind: "tail";   text: string };
+
+const SCRIPT: Line[] = [
+  { kind: "prompt", cmd: "boot --portfolio" },
+  { kind: "blank" },
+  { kind: "ok", label: "ai products",   text: "haimcore · relief-guru",     hl: "shipped" },
+  { kind: "ok", label: "healthcare",    text: "jalaram",                    hl: "LIVE" },
+  { kind: "ok", label: "geospatial",    text: "satalite × 2",               hl: "delivered" },
+  { kind: "ok", label: "totals",        text: "5 projects · 2,555 PS · 7 workflows" },
+  { kind: "ok", label: "status",        text: "open for hire · remote · global",   hl: "available" },
+  { kind: "blank" },
+  { kind: "tail", text: "press ⌘K anywhere to navigate" },
 ];
 
+// Highlight color per status hl token
+const hlColor = (s?: string) => {
+  if (!s) return "";
+  if (s === "LIVE")       return "text-mint";
+  if (s === "available")  return "text-mint";
+  if (s === "shipped")    return "text-coral";
+  if (s === "delivered")  return "text-violet";
+  return "text-lime";
+};
+
 export function Terminal() {
-  const [lines, setLines] = useState<
-    Array<{ type: "prompt" | "out"; text: string }>
-  >([]);
+  const [shown, setShown] = useState<Line[]>([]);
+  const [typed, setTyped] = useState(""); // partial-typing for the prompt
   const [done, setDone] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
-    async function play() {
-      const next: typeof lines = [];
+    const out: Line[] = [];
+
+    async function sleep(ms: number) {
+      await new Promise((r) => setTimeout(r, ms));
+    }
+
+    async function run() {
       for (const step of SCRIPT) {
-        // Type the prompt + command
-        await new Promise((r) => setTimeout(r, 200));
-        for (let i = 0; i <= step.cmd.length; i++) {
-          if (cancelled) return;
-          next.length && next.pop();
-          next.push({ type: "prompt", text: step.cmd.slice(0, i) });
-          setLines([...next]);
-          await new Promise((r) => setTimeout(r, 28));
+        if (cancelled) return;
+        if (step.kind === "prompt") {
+          out.push(step);
+          // type the command char-by-char (no popping of prior lines)
+          for (let i = 1; i <= step.cmd.length; i++) {
+            if (cancelled) return;
+            setTyped(step.cmd.slice(0, i));
+            setShown([...out]);
+            await sleep(28);
+          }
+          await sleep(380);
+        } else {
+          out.push(step);
+          setShown([...out]);
+          await sleep(step.kind === "blank" ? 80 : 110);
         }
-        for (const o of step.out) {
-          if (cancelled) return;
-          await new Promise((r) => setTimeout(r, 80));
-          next.push({ type: "out", text: o });
-          setLines([...next]);
-        }
-        await new Promise((r) => setTimeout(r, 280));
       }
       if (!cancelled) setDone(true);
     }
-    play();
+    run();
     return () => { cancelled = true; };
   }, []);
 
@@ -69,38 +71,68 @@ export function Terminal() {
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
+      transition={{ duration: 0.55, delay: 0.2 }}
       className="bg-bg-elev border border-rule-strong rounded-xl shadow-card overflow-hidden font-mono"
     >
       <div className="flex items-center gap-1.5 px-3.5 py-2.5 bg-bg/60 border-b border-rule">
         <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
         <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
         <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
-        <span className="ml-3 text-[11px] text-ink-dim">
-          ~/about-me  --  ishu@tbilisi
-        </span>
+        <span className="ml-3 text-[11px] text-ink-dim">~ ishu@tbilisi : ~/portfolio</span>
       </div>
-      <div className="px-5 py-5 text-[13px] leading-relaxed text-ink-mute min-h-[280px] whitespace-pre-wrap">
-        {lines.map((l, i) =>
-          l.type === "prompt" ? (
-            <div key={i}>
-              <span className="text-lime font-bold">→ </span>
-              <span className="text-ink">{l.text}</span>
+
+      <div className="px-5 py-5 text-[13px] leading-[1.65] text-ink-mute min-h-[300px]">
+        {shown.map((line, i) => {
+          const isLast = i === shown.length - 1;
+
+          if (line.kind === "prompt") {
+            return (
+              <div key={i}>
+                <span className="text-lime font-bold">→ </span>
+                <span className="text-ink">{isLast && !done ? typed : line.cmd}</span>
+                {isLast && !done && <BlinkCaret />}
+              </div>
+            );
+          }
+          if (line.kind === "blank") {
+            return <div key={i} className="h-2" />;
+          }
+          if (line.kind === "ok") {
+            return (
+              <div key={i} className="flex flex-wrap gap-x-3 items-baseline">
+                <span className="text-mint">[ OK ]</span>
+                <span className="text-ink-dim w-[100px] shrink-0">{line.label}</span>
+                <span className="text-ink">{line.text}</span>
+                {line.hl && (
+                  <span
+                    className={`uppercase tracking-wide3 font-bold ${hlColor(line.hl)}`}
+                  >
+                    · {line.hl}
+                  </span>
+                )}
+              </div>
+            );
+          }
+          // tail
+          return (
+            <div key={i} className="mt-2 text-ink-dim text-[12px] italic">
+              {line.text}
             </div>
-          ) : (
-            <div key={i}>
-              <span className="text-coral">  - </span>
-              <span className="text-ink">{l.text}</span>
-            </div>
-          )
-        )}
+          );
+        })}
         {done && (
           <div>
             <span className="text-lime font-bold">→ </span>
-            <span className="inline-block w-2 h-[1em] bg-lime align-text-bottom animate-blink" />
+            <BlinkCaret />
           </div>
         )}
       </div>
     </motion.div>
+  );
+}
+
+function BlinkCaret() {
+  return (
+    <span className="inline-block w-2 h-[1em] bg-lime align-text-bottom animate-blink ml-0.5" />
   );
 }
