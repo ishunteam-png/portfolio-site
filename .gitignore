@@ -3,9 +3,6 @@ dist/
 dist-ssr/
 *.local
 
-# Vercel
-.vercel
-
 # Editor / OS
 .DS_Store
 *.log

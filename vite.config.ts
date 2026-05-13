@@ -3,8 +3,8 @@ import react from "@vitejs/plugin-react";
 
 declare const process: { env: Record<string, string | undefined> };
 
-// GH Pages serves at /portfolio-site/; Vercel serves at the apex.
-// CI sets DEPLOY_TARGET=gh-pages so we only rewrite asset URLs there.
+// GitHub Pages serves at /portfolio-site/. CI sets DEPLOY_TARGET=gh-pages
+// so Vite emits asset URLs under that base. Local dev keeps "/".
 const base = process.env.DEPLOY_TARGET === "gh-pages" ? "/portfolio-site/" : "/";
 
 export default defineConfig({

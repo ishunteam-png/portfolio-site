@@ -1,7 +1,8 @@
 # Ishu Singh — portfolio site
 
 Static portfolio site at `D:\CLAUDE\portfolio-site\`. Plain HTML / CSS /
-JavaScript, no framework. Hosted on Vercel (or anywhere static).
+JavaScript, no framework. Hosted on GitHub Pages at
+https://ishunteam-png.github.io/portfolio-site/ (or anywhere static).
 
 ## What's here
 
@@ -31,8 +32,7 @@ portfolio-site/
 ├── scripts/
 │   ├── build_site.py          # MD -> HTML pipeline (optional)
 │   └── generate_og.py         # regenerate the OG card
-├── vercel.json                # routing + cache headers + redirects
-├── .github/workflows/deploy.yml  # auto-deploy on push to main
+├── .github/workflows/pages.yml  # GitHub Pages auto-deploy on push to main
 └── README.md
 ```
 
@@ -78,42 +78,20 @@ py scripts/build_site.py --check    # diff-only mode, no writes
 four project HTML files are the canonical source for now — convert them
 to MD when you want to.)
 
-## Deploying to Vercel
+## Deploying to GitHub Pages
 
-### One-time setup
+The repo at `github.com/ishunteam-png/portfolio-site` is wired to
+deploy via GitHub Actions on every push to `main`. The workflow
+(`.github/workflows/pages.yml`) builds with `DEPLOY_TARGET=gh-pages`
+so Vite emits asset URLs under `/portfolio-site/`, then publishes
+`dist/` to GitHub Pages.
 
-1. Sign in at https://vercel.com with your GitHub account.
-2. Click "Add New Project", point at this repo (push it first):
+The live URL is https://ishunteam-png.github.io/portfolio-site/.
 
-   ```powershell
-   cd D:\CLAUDE\portfolio-site
-   git init
-   git add .
-   git commit -m "initial portfolio site"
-   git branch -M main
-   gh repo create ishunteam-png/portfolio-site --public --source=. --push
-   ```
+### One-time setup (already done)
 
-3. Vercel auto-detects the static site. Accept defaults (no build
-   command, output dir is the root).
-4. Add a custom domain later under **Project &rarr; Settings &rarr;
-   Domains** if you want `ishusingh.dev` (or whatever) instead of the
-   `*.vercel.app` subdomain.
-
-### Auto-deploy on push
-
-There are two ways to wire continuous deploys:
-
-- **Easy:** Vercel's GitHub integration. After step 2 above, every push
-  to `main` deploys automatically. No GitHub Action needed.
-- **Manual:** the `.github/workflows/deploy.yml` workflow uses the
-  Vercel CLI and a `VERCEL_TOKEN` secret. Useful if you want the
-  workflow to do other things (e.g. regenerate PDFs from the SATALITE
-  source).
-
-  In GitHub: **Settings &rarr; Secrets and variables &rarr; Actions**,
-  add `VERCEL_TOKEN`. Grab the token at
-  https://vercel.com/account/tokens.
+1. In the repo, **Settings &rarr; Pages &rarr; Source: GitHub Actions**.
+2. Push to `main`. The `pages.yml` workflow handles the rest.
 
 ### Replace the Formspree endpoint
 
@@ -142,8 +120,7 @@ collecting analytics. Until then it's a no-op (no errors in console).
 | Scroll-snap nav (smooth scroll) | `html { scroll-behavior: smooth }` in CSS |
 | OG meta + favicon | `index.html` head + `assets/img/favicon.svg` + `assets/img/og.png` |
 | Plausible analytics | `index.html` head |
-| GitHub Actions deploy | `.github/workflows/deploy.yml` |
-| Vercel routing + cache + shortlinks | `vercel.json` (incl. `/cv`, `/portfolio`, `/mini-cv`, `/github`) |
+| GitHub Pages deploy | `.github/workflows/pages.yml` |
 | PDF downloads | `assets/pdf/` |
 
 ## What I deliberately left out (for now)
