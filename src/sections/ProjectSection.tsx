@@ -6,6 +6,7 @@ import {
   accentBorder, accentText, accentBg, accentHex,
   fadeUp, stagger,
 } from "../lib/motion";
+import { withBase } from "../lib/asset";
 import type { Project } from "../data/projects";
 import { ArchSvg } from "./ArchSvg";
 import { PsMap } from "./PsMap";
@@ -178,7 +179,7 @@ export function ProjectSection({ project: p, flipped = false, meta = "" }: Props
               </MagneticButton>
             )}
             <MagneticButton
-              href="/pdf/Ishu_Singh_Portfolio.pdf"
+              href={withBase("/pdf/Ishu_Singh_Portfolio.pdf")}
               download
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg
                          border border-rule-strong font-mono text-[13px]
@@ -215,7 +216,7 @@ export function ProjectSection({ project: p, flipped = false, meta = "" }: Props
               </span>
             )}
             <img
-              src={p.heroImage}
+              src={withBase(p.heroImage)}
               alt={`${p.title} hero visual`}
               className="w-full block"
               loading="lazy"
@@ -261,7 +262,7 @@ export function ProjectSection({ project: p, flipped = false, meta = "" }: Props
               {p.supplementalImages.map((src) => (
                 <motion.img
                   key={src}
-                  src={src}
+                  src={withBase(src)}
                   alt=""
                   loading="lazy"
                   initial={{ opacity: 0, y: 12 }}

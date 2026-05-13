@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Terminal } from "../components/Terminal";
 import { MagneticButton } from "../components/MagneticButton";
 import { useCoarsePointer } from "../hooks/useMouse";
+import { withBase } from "../lib/asset";
 
 export function Hero() {
   const mx = useMotionValue(50);
@@ -128,7 +129,7 @@ export function Hero() {
               See the work →
             </MagneticButton>
             <MagneticButton
-              href="/pdf/Ishu_Singh_CV.pdf"
+              href={withBase("/pdf/Ishu_Singh_CV.pdf")}
               download
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg
                          border border-rule-strong text-ink font-mono text-[13.5px]
@@ -137,7 +138,7 @@ export function Hero() {
               Download CV
             </MagneticButton>
             <MagneticButton
-              href="/pdf/Ishu_Singh_Portfolio.pdf"
+              href={withBase("/pdf/Ishu_Singh_Portfolio.pdf")}
               download
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg
                          border border-rule-strong text-ink font-mono text-[13.5px]

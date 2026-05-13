@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
+import { withBase } from "../lib/asset";
 
 interface Action {
   code: string;
@@ -68,7 +69,9 @@ export function CmdK({ open, onClose }: Props) {
     if (a.type === "anchor") {
       document.querySelector(a.target)?.scrollIntoView({ behavior: "smooth" });
     } else if (a.type === "url") {
-      window.location.href = a.target;
+      window.location.href = a.target.startsWith("/") && !a.target.startsWith("//")
+        ? withBase(a.target)
+        : a.target;
     }
   }
 
