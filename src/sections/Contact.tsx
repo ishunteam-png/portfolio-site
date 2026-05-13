@@ -6,7 +6,6 @@ const ROWS: Array<[string, React.ReactNode]> = [
   ["Phone",     "+995 555 114 467"],
   ["Based in",  "Tbilisi, Georgia"],
   ["GitHub",    <a href="https://github.com/ishunteam-png" target="_blank" rel="noopener">github.com/ishunteam-png</a>],
-  ["Live demo", <a href="https://shreejalaramhospital.live" target="_blank" rel="noopener">shreejalaramhospital.live</a>],
   ["Languages", "EN (Fluent) · HI (Native) · GU (Native) · KA (Conversational)"],
 ];
 
