@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import L from "leaflet";
 import { accentText, accentHex, type AccentName } from "../lib/motion";
+import { withBase } from "../lib/asset";
 
 interface Props { accent: AccentName; }
 
@@ -57,7 +58,7 @@ export function PsMap({ accent }: Props) {
       }
     ).addTo(map);
 
-    fetch("/data/delhi_ps.geojson")
+    fetch(withBase("/data/delhi_ps.geojson"))
       .then((r) => r.json())
       .then((gj: any) => {
         const layer = L.geoJSON(gj, {
