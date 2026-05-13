@@ -1,12 +1,26 @@
+# Build output
+dist/
+dist-ssr/
+*.local
+
+# Vercel
 .vercel
+
+# Editor / OS
 .DS_Store
-node_modules
 *.log
 *.tmp
 *.swp
+
+# Env
 .env*
 !.env.example
+
+# Node / npm
+node_modules/
+.npm/
+*.tsbuildinfo
+
+# Python (scripts/)
 __pycache__/
 *.pyc
-
-.vercel
