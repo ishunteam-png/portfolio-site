@@ -4,47 +4,75 @@
 
 :root,
 [data-theme="dark"] {
-  --bg:           #0a0f1a;
-  --bg-elev:      #0f1626;
-  --bg-card:      #111b2e;
-  --bg-tint:      rgba(78, 163, 255, 0.08);
-  --bg-tint-warm: rgba(240, 136, 75, 0.08);
-  --ink:          #e6ecf5;
-  --ink-mute:     #94a3b8;
-  --ink-dim:      #64748b;
-  --accent:       #4ea3ff;
-  --accent-hi:    #7fc0ff;
-  --warm:         #f0884b;
-  --green:        #2dd4bf;
-  --red:          #f87171;
-  --rule:         rgba(255, 255, 255, 0.07);
+  /* Surfaces - deeper, cooler than before */
+  --bg:           #06080f;
+  --bg-elev:      #0a0e1c;
+  --bg-card:      #0f1424;
+  --bg-tint:      rgba(124, 230, 255, 0.07);
+  --bg-tint-warm: rgba(255, 148, 102, 0.08);
+
+  /* Text */
+  --ink:          #eef2fa;
+  --ink-mute:     #95a3ba;
+  --ink-dim:      #5b6680;
+
+  /* Iridescent accent system (replaces the generic blue) */
+  --accent:       #7ce6ff;  /* cyan          - default / Haimcore */
+  --accent-hi:    #b8f1ff;
+  --warm:         #ff9466;  /* sunset coral  - Relief Guru */
+  --green:        #5bffb6;  /* electric mint - Jalaram live */
+  --violet:       #c39dff;  /* iridescent purple - Delhi */
+  --amber:        #ffd166;  /* warm amber    - Kite Beach */
+  --red:          #ff6b8a;
+
+  /* Per-project accent (overridden by data-accent on each stripe) */
+  --proj-accent:       var(--accent);
+  --proj-accent-soft:  color-mix(in srgb, var(--proj-accent) 18%, transparent);
+  --proj-glow:         color-mix(in srgb, var(--proj-accent) 40%, transparent);
+
+  /* Rules + shadows */
+  --rule:         rgba(255, 255, 255, 0.06);
   --rule-strong:  rgba(255, 255, 255, 0.14);
-  --shadow:       0 10px 40px rgba(0, 0, 0, 0.5);
-  --shadow-card:  0 8px 24px rgba(0, 0, 0, 0.35);
-  --radius:       12px;
-  --radius-sm:    6px;
+  --shadow:       0 22px 60px rgba(0, 0, 0, 0.55),
+                  0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-card:  0 8px 28px rgba(0, 0, 0, 0.4);
+
+  --radius:       14px;
+  --radius-sm:    8px;
   --container:    1240px;
 }
 
 [data-theme="light"] {
-  --bg:           #fafbfd;
+  --bg:           #f6f7fb;
   --bg-elev:      #ffffff;
   --bg-card:      #ffffff;
-  --bg-tint:      rgba(31, 111, 235, 0.06);
-  --bg-tint-warm: rgba(192, 82, 28, 0.06);
-  --ink:          #0b1b2b;
+  --bg-tint:      rgba(11, 110, 145, 0.06);
+  --bg-tint-warm: rgba(196, 92, 38, 0.06);
+
+  --ink:          #06101e;
   --ink-mute:     #3a4a5c;
   --ink-dim:      #6b7785;
-  --accent:       #1f6feb;
-  --accent-hi:    #2563eb;
-  --warm:         #c0521c;
+
+  --accent:       #0b6e91;
+  --accent-hi:    #095f7d;
+  --warm:         #c44c26;
   --green:        #047857;
+  --violet:       #6d3fcb;
+  --amber:        #b27600;
   --red:          #b91c1c;
-  --rule:         rgba(11, 27, 43, 0.06);
-  --rule-strong:  rgba(11, 27, 43, 0.14);
-  --shadow:       0 10px 40px rgba(11, 27, 43, 0.08);
-  --shadow-card:  0 6px 20px rgba(11, 27, 43, 0.05);
+
+  --rule:         rgba(11, 27, 43, 0.07);
+  --rule-strong:  rgba(11, 27, 43, 0.16);
+  --shadow:       0 18px 50px rgba(11, 27, 43, 0.08);
+  --shadow-card:  0 8px 22px rgba(11, 27, 43, 0.05);
 }
+
+/* Per-project accent assignment (used on .project-stripe[data-accent=...]) */
+.project-stripe[data-accent="ai"]     { --proj-accent: var(--accent); }
+.project-stripe[data-accent="auto"]   { --proj-accent: var(--warm); }
+.project-stripe[data-accent="health"] { --proj-accent: var(--green); }
+.project-stripe[data-accent="insar1"] { --proj-accent: var(--violet); }
+.project-stripe[data-accent="insar2"] { --proj-accent: var(--amber); }
 
 /* --------------------------------------------------- reset + base */
 *, *::before, *::after { box-sizing: border-box; }
@@ -1128,6 +1156,343 @@ body::before {
   background:
     radial-gradient(ellipse 40% 60% at 10% 50%,
       color-mix(in srgb, var(--warm) 5%, transparent), transparent 70%);
+}
+
+
+/* ============================================== PER-PROJECT ACCENT CASCADE === */
+/* Inside a .project-stripe[data-accent=...], every element that used to
+   reference --accent now uses --proj-accent instead. */
+.project-stripe .project-code-big,
+.project-stripe .project-code-suffix,
+.project-stripe .project-sub,
+.project-stripe .project-stack-manifest h3,
+.project-stripe .project-stack-manifest::before,
+.project-stripe .project-bite-label,
+.project-stripe .project-highlights li::before,
+.project-stripe .deepdive-col h3,
+.project-stripe .frame-corner,
+.project-stripe .metric-mini:hover {
+  --accent: var(--proj-accent);
+}
+.project-stripe .project-code-big       { color: var(--proj-accent); }
+.project-stripe .project-sub            { color: var(--proj-accent); }
+.project-stripe .project-stack-manifest h3 { color: var(--proj-accent); }
+.project-stripe .project-stack-manifest::before { background: var(--proj-accent); }
+.project-stripe .project-highlights li::before { color: var(--proj-accent); }
+.project-stripe .metric-mini-num        { color: var(--proj-accent); }
+.project-stripe .project-image-frame    {
+  border-color: var(--rule-strong);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45),
+              0 0 0 1px var(--proj-accent-soft),
+              0 0 60px var(--proj-glow);
+  transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1),
+              box-shadow 0.4s ease;
+}
+.project-stripe .project-image-frame:hover {
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55),
+              0 0 0 1px var(--proj-accent),
+              0 0 100px var(--proj-glow);
+}
+.project-stripe .project-status         { color: var(--proj-accent); }
+.project-stripe .deepdive-col h3:not(.warm) { color: var(--proj-accent); }
+.project-stripe .deepdive-prose code    { color: var(--proj-accent); }
+.project-stripe .project-cta .primary {
+  background: var(--proj-accent);
+  border-color: var(--proj-accent);
+  color: var(--bg);
+}
+.project-stripe .project-cta .primary:hover {
+  background: var(--bg);
+  color: var(--proj-accent);
+  box-shadow: inset 0 0 0 1.5px var(--proj-accent),
+              0 0 24px var(--proj-glow);
+}
+.project-stripe .project-cta .secondary:hover {
+  border-color: var(--proj-accent);
+  color: var(--proj-accent);
+}
+
+/* Gradient mesh per project (tinted by proj accent) */
+.project-stripe::before {
+  background:
+    radial-gradient(ellipse 50% 70% at 90% 50%,
+      color-mix(in srgb, var(--proj-accent) 8%, transparent),
+      transparent 70%);
+}
+.project-stripe[data-flip="true"]::before {
+  background:
+    radial-gradient(ellipse 50% 70% at 10% 50%,
+      color-mix(in srgb, var(--proj-accent) 8%, transparent),
+      transparent 70%);
+}
+
+
+/* ============================================== GLASSMORPHIC METRIC CARDS === */
+.metric-mini {
+  background: color-mix(in srgb, var(--bg-card) 65%, transparent);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid var(--rule-strong);
+  position: relative;
+  overflow: hidden;
+}
+.metric-mini::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 0%,
+      color-mix(in srgb, var(--proj-accent) 15%, transparent),
+      transparent 60%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.metric-mini-num {
+  position: relative;
+  background: linear-gradient(135deg, var(--ink) 0%, var(--proj-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
+/* ============================================== TERMINAL-STYLE CODE FRAMES === */
+.code-frame {
+  margin: 18px 0;
+  padding: 0;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-card);
+  font-family: "JetBrains Mono", monospace;
+}
+.code-frame-head {
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: color-mix(in srgb, var(--bg) 50%, transparent);
+  border-bottom: 1px solid var(--rule);
+  font-size: 11px;
+  color: var(--ink-dim);
+  letter-spacing: 0.04em;
+}
+.code-frame-head .dots {
+  display: flex; gap: 4px;
+}
+.code-frame-head .dots span {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--rule-strong);
+}
+.code-frame-body {
+  padding: 14px 18px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+.code-frame-body .com { color: var(--ink-dim); }
+.code-frame-body .key { color: var(--proj-accent); font-weight: 700; }
+.code-frame-body .num { color: var(--amber); }
+.code-frame-body .str { color: var(--green); }
+.code-frame-body .err { color: var(--red); }
+
+
+/* ============================================== DECORATIVE SECTION MARKERS === */
+.deco-marker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+.deco-marker::before {
+  content: "";
+  width: 28px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--proj-accent), transparent);
+}
+.deco-marker::after {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--proj-accent);
+  box-shadow: 0 0 12px var(--proj-glow);
+}
+
+
+/* ============================================== FRAMED PULL-QUOTE === */
+.pull-frame {
+  margin: 22px 0;
+  position: relative;
+  padding: 26px 30px 26px 60px;
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--proj-accent) 4%, transparent),
+      color-mix(in srgb, var(--warm) 3%, transparent));
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink);
+  font-style: italic;
+  letter-spacing: -0.005em;
+}
+.pull-frame::before {
+  content: "&";
+  position: absolute;
+  top: -14px; left: 14px;
+  font-family: "Inter", serif;
+  font-size: 90px;
+  font-weight: 900;
+  color: var(--proj-accent);
+  line-height: 1;
+  opacity: 0.55;
+  font-style: normal;
+}
+.pull-frame::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg,
+    var(--proj-accent), transparent, var(--warm));
+  z-index: -1;
+  opacity: 0.3;
+}
+
+
+/* ============================================== MARQUEE DIVIDER === */
+.marquee {
+  margin: 60px 0 30px;
+  padding: 14px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--bg-card) 50%, transparent);
+}
+.marquee-track {
+  display: inline-block;
+  animation: marquee 40s linear infinite;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  color: var(--ink-dim);
+  letter-spacing: 0.05em;
+}
+.marquee-track span { padding: 0 28px; }
+.marquee-track span b {
+  color: var(--accent);
+  font-weight: 700;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+
+/* ============================================== HOLOGRAPHIC HERO NAME === */
+.hero-name {
+  background: linear-gradient(
+    135deg,
+    var(--ink) 0%,
+    var(--accent) 35%,
+    var(--violet) 60%,
+    var(--ink) 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hologram 8s ease-in-out infinite;
+}
+@keyframes hologram {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+
+/* ============================================== HERO MOUSE-TRACKING GRADIENT === */
+.hero {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+.hero::after {
+  background:
+    radial-gradient(ellipse 50% 35% at var(--mouse-x) var(--mouse-y),
+      color-mix(in srgb, var(--accent) 20%, transparent), transparent 65%),
+    radial-gradient(ellipse 40% 30% at 85% 60%,
+      color-mix(in srgb, var(--warm) 12%, transparent), transparent 70%),
+    radial-gradient(ellipse 30% 25% at 60% 90%,
+      color-mix(in srgb, var(--violet) 10%, transparent), transparent 75%);
+  transition: background 0.3s ease;
+}
+
+
+/* ============================================== CUSTOM CURSOR === */
+@media (pointer: fine) {
+  body { cursor: none; }
+  a, button, [role="button"], input, textarea, label, .card-link { cursor: none; }
+}
+#cursor-dot,
+#cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+#cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  transition: width 0.15s ease, height 0.15s ease, background 0.15s ease;
+  box-shadow: 0 0 12px var(--accent);
+}
+#cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  transition: width 0.2s cubic-bezier(0.2, 0.6, 0.2, 1),
+              height 0.2s cubic-bezier(0.2, 0.6, 0.2, 1),
+              border-color 0.2s ease,
+              transform 0.08s linear,
+              opacity 0.2s ease;
+  opacity: 0.7;
+}
+body.cursor-over-interactive #cursor-dot {
+  width: 0; height: 0;
+}
+body.cursor-over-interactive #cursor-ring {
+  width: 50px; height: 50px;
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  opacity: 1;
+}
+body.cursor-hidden #cursor-dot,
+body.cursor-hidden #cursor-ring { opacity: 0; }
+@media (pointer: coarse) {
+  #cursor-dot, #cursor-ring { display: none; }
+  body { cursor: auto; }
+}
+
+
+/* ============================================== SCROLL PROGRESS BAR === */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--violet), var(--warm));
+  z-index: 60;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px var(--accent);
 }
 
 

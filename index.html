@@ -32,7 +32,7 @@
           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
           crossorigin=""></script>
 
-  <link rel="stylesheet" href="assets/css/main.css?v=3" />
+  <link rel="stylesheet" href="assets/css/main.css?v=4" />
 
   <script defer
           data-domain="portfolio-site-rosy-nu-61.vercel.app"
@@ -150,6 +150,26 @@
   </div>
 </section>
 
+<!-- Marquee divider: scrolling fact strip -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span><b>2,555</b> persistent scatterers, ITRF14 frame</span>
+    <span><b>4</b> portals, one Postgres schema, GPT-4o copilot</span>
+    <span><b>7</b> n8n workflows, every step traceable</span>
+    <span><b>165</b> Sentinel-1 SLCs &rarr; 476 SBAS pairs</span>
+    <span><b>47</b> languages with keyboard-aware aliases</span>
+    <span><b>3</b> production releases, zero downtime rollbacks</span>
+    <span><b>shreejalaramhospital.live</b> &mdash; live in production</span>
+    <span><b>2,555</b> persistent scatterers, ITRF14 frame</span>
+    <span><b>4</b> portals, one Postgres schema, GPT-4o copilot</span>
+    <span><b>7</b> n8n workflows, every step traceable</span>
+    <span><b>165</b> Sentinel-1 SLCs &rarr; 476 SBAS pairs</span>
+    <span><b>47</b> languages with keyboard-aware aliases</span>
+    <span><b>3</b> production releases, zero downtime rollbacks</span>
+    <span><b>shreejalaramhospital.live</b> &mdash; live in production</span>
+  </div>
+</div>
+
 
 <!-- ============================================== BREAK + PROJECT 01 = -->
 <div class="break-banner reveal">
@@ -158,7 +178,7 @@
   <span class="break-meta">AI WORKSPACE &middot; NEXT.JS &middot; ANTHROPIC SDK</span>
 </div>
 
-<section id="proj-01" class="project-stripe" data-flip="false">
+<section id="proj-01" class="project-stripe" data-flip="false" data-accent="ai">
   <div class="project-grid-2col">
 
     <div class="project-meta reveal">
@@ -208,7 +228,7 @@
     <div class="project-visual reveal">
       <div class="project-image-frame">
         <span class="frame-corner">workspace.png</span>
-        <img src="assets/img/haimcore_workspace_mock.png?v=3"
+        <img src="assets/img/haimcore_workspace_mock.png?v=4"
              alt="Haimcore workspace mockup - 3-pane layout with folders, editor and Amirani AI assistant panel" />
       </div>
       <div class="project-metrics-mini">
@@ -232,7 +252,8 @@
   <!-- Inline deep-dive (was a separate page; now lives here) -->
   <div class="project-deepdive reveal">
     <div class="deepdive-col">
-      <h3>Case study &middot; What I built</h3>
+      <span class="deco-marker">FILE / what-i-built.md</span>
+      <h3>What I built</h3>
       <div class="deepdive-prose">
         <p>
           I built this as a Next.js application (pages router) with the
@@ -276,7 +297,10 @@
           uploaded to S3, a Postgres rollback instance kept around for
           the v4 cut-over as a safety net, a manual
           <code>pre-rollback-backup-&lt;date&gt;</code> folder before any
-          destructive change to source.
+          destructive change to source. I keep the rollback instance
+          alive for at least 7 days after a cut-over &mdash; long enough
+          that any &ldquo;wait, where did that record go?&rdquo; from a
+          real user lands while I still have the data.
         </p>
         <div class="pull-inline">
           &ldquo;I&rsquo;ve had to fall back to the snapshots once and it
@@ -286,7 +310,8 @@
     </div>
 
     <div class="deepdive-col">
-      <h3 class="warm">Case study &middot; The bits that bit me</h3>
+      <span class="deco-marker">FILE / bits-that-bit-me.md</span>
+      <h3 class="warm">The bits that bit me</h3>
       <div class="deepdive-prose">
         <p>
           After the v4 file overlay, the Anthropic SDK install lost
@@ -333,7 +358,7 @@
   <span class="break-meta">N8N V4 &middot; TELEGRAM &middot; HEYGEN &middot; PINECONE</span>
 </div>
 
-<section id="proj-02" class="project-stripe" data-flip="true">
+<section id="proj-02" class="project-stripe" data-flip="true" data-accent="auto">
   <div class="project-grid-2col">
 
     <div class="project-meta reveal">
@@ -384,7 +409,7 @@
     <div class="project-visual reveal">
       <div class="project-image-frame">
         <span class="frame-corner">arch_v4.png</span>
-        <img src="assets/img/relief_guru_arch.png?v=3"
+        <img src="assets/img/relief_guru_arch.png?v=4"
              alt="Relief Guru V4 - 7-workflow n8n architecture diagram" />
       </div>
       <div class="project-metrics-mini">
@@ -408,7 +433,8 @@
   <!-- Inline deep-dive: 7-workflow content + animated SVG -->
   <div class="project-deepdive reveal">
     <div class="deepdive-col">
-      <h3>Case study &middot; What I built</h3>
+      <span class="deco-marker">FILE / what-i-built.md</span>
+      <h3>What I built</h3>
       <div class="deepdive-prose">
         <p>
           <b>Why seven workflows.</b> V1 was one giant n8n workflow with
@@ -465,7 +491,8 @@
     </div>
 
     <div class="deepdive-col">
-      <h3>Case study &middot; The full chain</h3>
+      <span class="deco-marker">FILE / posting-pipeline.md</span>
+      <h3>The full chain (posting + tracker)</h3>
       <div class="deepdive-prose">
         <p>
           <b>Sticky messages.</b> Rather than spamming the chat with
@@ -623,7 +650,7 @@
   <span class="break-meta">LIVE PRODUCTION &middot; GPT-4o &middot; 4 PORTALS</span>
 </div>
 
-<section id="proj-03" class="project-stripe" data-flip="false">
+<section id="proj-03" class="project-stripe" data-flip="false" data-accent="health">
   <div class="project-grid-2col">
 
     <div class="project-meta reveal">
@@ -680,7 +707,7 @@
         <span class="frame-live">
           <span class="pulse-mini"></span>LIVE
         </span>
-        <img src="assets/img/jalaram_dashboard_mock.png?v=3"
+        <img src="assets/img/jalaram_dashboard_mock.png?v=4"
              alt="Jalaram Hospital doctor dashboard mockup - roster, AI insights, Copilot chat" />
       </div>
       <div class="project-metrics-mini">
@@ -703,7 +730,8 @@
 
   <div class="project-deepdive reveal">
     <div class="deepdive-col">
-      <h3>Case study &middot; What I built</h3>
+      <span class="deco-marker">FILE / what-i-built.md</span>
+      <h3>What I built</h3>
       <div class="deepdive-prose">
         <p>
           <b>Four portals, one backend.</b>
@@ -776,7 +804,8 @@
     </div>
 
     <div class="deepdive-col">
-      <h3>Case study &middot; Production + the bits that bit me</h3>
+      <span class="deco-marker">FILE / production-hardening.md</span>
+      <h3>Production + the bits that bit me</h3>
       <div class="deepdive-prose">
         <p>
           <b>Reports + lab uploads.</b> Multer-S3 to AWS S3 in the
@@ -853,7 +882,7 @@
   <span class="break-meta">SENTINEL-1 &middot; EGMS-L3 &middot; 2,555 PS &middot; ITRF14</span>
 </div>
 
-<section id="proj-04" class="project-stripe" data-flip="true">
+<section id="proj-04" class="project-stripe" data-flip="true" data-accent="insar1">
   <div class="project-grid-2col">
 
     <div class="project-meta reveal">
@@ -896,7 +925,9 @@
       </div>
 
       <div class="project-cta">
-        <a class="primary" href="#ps-map-inline">See interactive PS map &darr;</a>
+        <a class="primary" href="http://3.110.160.18:8501"
+           target="_blank" rel="noopener">Live dashboard ↗</a>
+        <a class="secondary" href="#ps-map-inline">Interactive PS map ↓</a>
         <a class="secondary" href="assets/pdf/Ishu_Singh_Portfolio.pdf" download>Methodology PDF</a>
       </div>
     </div>
@@ -904,7 +935,7 @@
     <div class="project-visual reveal">
       <div class="project-image-frame">
         <span class="frame-corner">velocity_dual_panel.png</span>
-        <img src="assets/img/delhi_velocity_dual_panel.png?v=3"
+        <img src="assets/img/delhi_velocity_dual_panel.png?v=4"
              alt="Delhi strict EGMS-L3 decomposition: vertical and east-west velocity panels" />
       </div>
       <div class="project-metrics-mini">
@@ -922,9 +953,9 @@
         </div>
       </div>
       <div class="project-supplemental">
-        <img src="assets/img/delhi_decomp_scatter.png?v=3"
+        <img src="assets/img/delhi_decomp_scatter.png?v=4"
              alt="V_U vs V_E decomposition scatter for the Delhi PS set" />
-        <img src="assets/img/delhi_timeseries.png?v=3"
+        <img src="assets/img/delhi_timeseries.png?v=4"
              alt="Time-series at the most-subsiding PS in the Delhi AOI" />
       </div>
     </div>
@@ -933,7 +964,8 @@
 
   <div class="project-deepdive reveal">
     <div class="deepdive-col">
-      <h3>Case study &middot; What I built</h3>
+      <span class="deco-marker">FILE / what-i-built.md</span>
+      <h3>What I built</h3>
       <div class="deepdive-prose">
         <p>
           <b>The site choice itself was the first piece of work.</b>
@@ -979,7 +1011,11 @@
           nearest forward neighbours, max temporal baseline 60 days.
           Past 60 days Delhi&rsquo;s monsoon decorrelation is too
           severe in my experience to be worth processing. 258 ASC +
-          218 DSC = 476 pairs.
+          218 DSC = 476 pairs. Saved as two
+          <code>(reference, secondary, temporal_baseline_days,
+          &hellip;)</code> CSVs &mdash; nothing fancier &mdash; because
+          the network is the kind of artefact I want to be able to diff
+          if something looks off three weeks later.
         </p>
         <p>
           <b>SNAP per pair.</b> TOPS coregistration with ESD,
@@ -1029,7 +1065,8 @@
     </div>
 
     <div class="deepdive-col">
-      <h3 class="warm">Case study &middot; The bits that bit me</h3>
+      <span class="deco-marker">FILE / bits-that-bit-me.md</span>
+      <h3 class="warm">The bits that bit me</h3>
       <div class="deepdive-prose">
         <p>
           <b>Multilook calibration.</b> First batch was 30&times;5
@@ -1116,7 +1153,7 @@
   <span class="break-meta">VALIDATION PILOT &middot; SINGLE-TRACK &middot; 152 PS</span>
 </div>
 
-<section id="proj-05" class="project-stripe" data-flip="false">
+<section id="proj-05" class="project-stripe" data-flip="false" data-accent="insar2">
   <div class="project-grid-2col">
 
     <div class="project-meta reveal">
@@ -1158,7 +1195,9 @@
       </div>
 
       <div class="project-cta">
-        <a class="primary" href="#proj-04">See the Delhi successor &uarr;</a>
+        <a class="primary" href="http://3.110.160.18:8502"
+           target="_blank" rel="noopener">Live dashboard ↗</a>
+        <a class="secondary" href="#proj-04">See the Delhi successor ↑</a>
         <a class="secondary" href="assets/pdf/Ishu_Singh_Portfolio.pdf" download>Methodology PDF</a>
       </div>
     </div>
@@ -1166,7 +1205,7 @@
     <div class="project-visual reveal">
       <div class="project-image-frame">
         <span class="frame-corner">velocity_map.png</span>
-        <img src="assets/img/kite_beach_velocity.png?v=3"
+        <img src="assets/img/kite_beach_velocity.png?v=4"
              alt="LOS velocity map at Kite Beach Road, Visakhapatnam - 152 PS" />
       </div>
       <div class="project-metrics-mini">
@@ -1189,7 +1228,8 @@
 
   <div class="project-deepdive reveal">
     <div class="deepdive-col">
-      <h3>Case study &middot; What I built</h3>
+      <span class="deco-marker">FILE / what-i-built.md</span>
+      <h3>What I built</h3>
       <div class="deepdive-prose">
         <p>
           <b>Single-track by site geometry, not by choice.</b> An
@@ -1233,7 +1273,8 @@
     </div>
 
     <div class="deepdive-col">
-      <h3 class="warm">Case study &middot; The bits that bit me</h3>
+      <span class="deco-marker">FILE / bits-that-bit-me.md</span>
+      <h3 class="warm">The bits that bit me</h3>
       <div class="deepdive-prose">
         <p>
           <b>The ASF gap is the real story.</b> I burned time on the
@@ -1441,13 +1482,14 @@
   </div>
 </div>
 
-<script src="assets/js/main.js?v=3"></script>
-<script src="assets/js/terminal.js?v=3"></script>
-<script src="assets/js/counters.js?v=3"></script>
-<script src="assets/js/reveal.js?v=3"></script>
-<script src="assets/js/reels.js?v=3"></script>
-<script src="assets/js/map.js?v=3"></script>
-<script src="assets/js/cmdk.js?v=3"></script>
+<script src="assets/js/main.js?v=4"></script>
+<script src="assets/js/terminal.js?v=4"></script>
+<script src="assets/js/counters.js?v=4"></script>
+<script src="assets/js/reveal.js?v=4"></script>
+<script src="assets/js/reels.js?v=4"></script>
+<script src="assets/js/map.js?v=4"></script>
+<script src="assets/js/interact.js?v=4"></script>
+<script src="assets/js/cmdk.js?v=4"></script>
 
 </body>
 </html>
