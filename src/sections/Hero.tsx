@@ -140,15 +140,18 @@ export function Hero() {
               Download CV
             </MagneticButton>
             <MagneticButton
-              href={withBase("/pdf/Ishu_Singh_Portfolio.pdf")}
-              download
+              href="https://ishunteam-png.github.io/gis-portfolio/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg
-                         border border-rule-strong text-ink font-mono text-[13.5px]
-                         hover:border-lime hover:text-lime transition-colors"
+                         border border-rule-strong font-mono text-[13.5px]
+                         transition-colors"
+              style={{
+                borderColor: "rgba(195,157,255,0.45)",
+                color: "#C39DFF",
+              }}
             >
-              Portfolio PDF
+              GIS Portfolio ↗
             </MagneticButton>
           </motion.div>
         </div>
