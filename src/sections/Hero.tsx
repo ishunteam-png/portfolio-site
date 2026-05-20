@@ -53,7 +53,7 @@ export function Hero() {
       />
 
       <div className="wrap grid md:grid-cols-[1.05fr_0.95fr] gap-14 items-center
-                       pt-24 pb-20">
+                       pt-16 md:pt-24 pb-12 md:pb-20">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -131,6 +131,8 @@ export function Hero() {
             <MagneticButton
               href={withBase("/pdf/Ishu_Singh_CV.pdf")}
               download
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg
                          border border-rule-strong text-ink font-mono text-[13.5px]
                          hover:border-lime hover:text-lime transition-colors"
@@ -140,6 +142,8 @@ export function Hero() {
             <MagneticButton
               href={withBase("/pdf/Ishu_Singh_Portfolio.pdf")}
               download
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg
                          border border-rule-strong text-ink font-mono text-[13.5px]
                          hover:border-lime hover:text-lime transition-colors"
@@ -149,7 +153,10 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <Terminal />
+        {/* Hidden on mobile — terminal is decorative and makes mobile hero very tall */}
+        <div className="hidden md:block">
+          <Terminal />
+        </div>
       </div>
     </header>
   );
