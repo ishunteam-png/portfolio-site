@@ -4,6 +4,7 @@ import { Hero } from "./sections/Hero";
 import { MetricsStrip } from "./sections/MetricsStrip";
 import { Marquee } from "./sections/Marquee";
 import { ProjectSection } from "./sections/ProjectSection";
+import { GisSection } from "./sections/GisSection";
 import { HowIWork } from "./sections/HowIWork";
 import { Contact } from "./sections/Contact";
 import { Footer } from "./sections/Footer";
@@ -47,6 +48,8 @@ export default function App() {
           meta={metas[i]}
         />
       ))}
+
+      <GisSection />
 
       <HowIWork />
       <Contact />
