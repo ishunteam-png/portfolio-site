@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode, type CSSProperties } from "react";
 import { useCoarsePointer, usePrefersReducedMotion } from "../hooks/useMouse";
 
 interface Props {
@@ -7,6 +7,7 @@ interface Props {
   href?: string;
   onClick?: () => void;
   className?: string;
+  style?: CSSProperties;
   target?: string;
   rel?: string;
   download?: boolean;
@@ -18,6 +19,7 @@ export function MagneticButton({
   href,
   onClick,
   className = "",
+  style,
   target,
   rel,
   download,
@@ -47,6 +49,7 @@ export function MagneticButton({
     onMouseLeave: reset,
     "data-magnetic": "true" as const,
     className,
+    style,
   };
 
   if (href) {
