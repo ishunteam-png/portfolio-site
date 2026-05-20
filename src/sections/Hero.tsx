@@ -10,7 +10,6 @@ export function Hero() {
   const my = useMotionValue(50);
   const coarse = useCoarsePointer();
 
-  // Mouse-tracked gradient mask position
   const bg = useTransform(
     [mx, my],
     ([x, y]: number[]) =>
@@ -34,12 +33,10 @@ export function Hero() {
 
   return (
     <header id="top" className="hero-root relative overflow-hidden">
-      {/* Mouse-tracked gradient mesh */}
       <motion.div
         className="absolute inset-0 pointer-events-none -z-10"
         style={{ background: bg }}
       />
-      {/* Crosshatch grid */}
       <div
         className="absolute inset-0 pointer-events-none -z-10 opacity-[0.32]"
         style={{
@@ -67,7 +64,7 @@ export function Hero() {
               <span className="absolute inset-[-3px] rounded-full bg-mint opacity-50 animate-ping" />
             </span>
             <span>OPEN FOR REMOTE FREELANCE</span>
-            <span className="text-ink-mute">· TBILISI, GE</span>
+            <span className="text-ink-mute">&middot; TBILISI, GE</span>
           </motion.div>
 
           <motion.h1
@@ -95,9 +92,9 @@ export function Hero() {
             className="font-mono text-[15px] text-ink-mute mb-6 flex flex-wrap gap-2"
           >
             <span className="text-lime font-bold">AI / Automation Engineer</span>
-            <span className="text-ink-dim">·</span>
+            <span className="text-ink-dim">&middot;</span>
             <span>InSAR &amp; Geospatial</span>
-            <span className="text-ink-dim">·</span>
+            <span className="text-ink-dim">&middot;</span>
             <span>Full-Stack</span>
           </motion.p>
 
@@ -107,7 +104,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="text-[16px] leading-relaxed text-ink-mute mb-7 max-w-[520px]"
           >
-            I build AI-assisted software and the plumbing around it —
+            I build AI-assisted software and the plumbing around it &mdash;
             production web apps, Telegram-driven workflow automations,
             healthcare platforms, and Sentinel-1 InSAR pipelines. Recently
             picked up SAR processing from scratch and delivered a strict
@@ -126,7 +123,7 @@ export function Hero() {
                          bg-lime text-bg font-mono font-bold text-[13.5px]
                          hover:shadow-glow-lime transition-shadow"
             >
-              See the work →
+              See the work &rarr;
             </MagneticButton>
             <MagneticButton
               href={withBase("/pdf/Ishu_Singh_CV.pdf")}
@@ -140,6 +137,21 @@ export function Hero() {
               Download CV
             </MagneticButton>
             <MagneticButton
+              href={withBase("/pdf/Ishu_Singh_Portfolio.pdf")}
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg
+                         border border-rule-strong font-mono text-[13.5px]
+                         hover:border-amber hover:text-amber transition-colors"
+              style={{
+                borderColor: "rgba(255,209,102,0.4)",
+                color: "#FFD166",
+              }}
+            >
+              Portfolio PDF
+            </MagneticButton>
+            <MagneticButton
               href="https://ishunteam-png.github.io/gis-portfolio/"
               target="_blank"
               rel="noopener noreferrer"
@@ -151,12 +163,11 @@ export function Hero() {
                 color: "#C39DFF",
               }}
             >
-              GIS Portfolio ↗
+              GIS Portfolio &#8599;
             </MagneticButton>
           </motion.div>
         </div>
 
-        {/* Hidden on mobile — terminal is decorative and makes mobile hero very tall */}
         <div className="hidden md:block">
           <Terminal />
         </div>
